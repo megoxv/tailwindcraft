@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100;200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .main-grid {
+        display: grid;
+        align-items: start;
+        grid-auto-columns: 1fr;
+        gap: 32px;
+        grid-template-columns: 0.75fr 0.25fr;
+        grid-template-rows: auto;
+    }
+
+    @media screen and (max-width: 991px) {
+        .main-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background-color: #131315;
+        border-radius: 30px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background-color: #222224;
+        border-radius: 30px;
+    }
+}
