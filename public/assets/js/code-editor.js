@@ -4,7 +4,7 @@ let editorElement = document.getElementById('editor');
 if (editorElement) {
     // pass options to ace.edit
     let editor = ace.edit(document.getElementById('editor'), {
-        mode: "ace/mode/html",
+        mode: "ace/mode/html_run",
         theme: "ace/theme/github_dark",
         maxLines: 50,
         minLines: 10,

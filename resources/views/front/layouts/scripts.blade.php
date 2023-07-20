@@ -14,23 +14,7 @@
     </script>
 @endif
 {{-- End Google Analytics --}}
-<script>
-    @if (Session::has('message'))
-        Toast.success("{{ session('message') }}");
-    @endif
 
-    @if (Session::has('error'))
-        Toast.error("{{ session('error') }}");
-    @endif
-
-    @if (Session::has('info'))
-        Toast.info("{{ session('info') }}");
-    @endif
-
-    @if (Session::has('warning'))
-        Toast.warning("{{ session('warning') }}");
-    @endif
-</script>
 @stack('modals')
 @stack('scripts')
 @livewireScripts
