@@ -5,7 +5,9 @@ namespace App\Http\Livewire;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\Post;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Columns\BooleanColumn;
+use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
 
 class PostTable extends DataTableComponent
 {
@@ -82,6 +84,38 @@ class PostTable extends DataTableComponent
                         return $actions;
                     }
                 )->html(),
+        ];
+    }
+
+    public function filters(): array
+    {
+        return [
+            SelectFilter::make('Status')
+                ->setFilterPillTitle('Status')
+                ->setFilterPillValues([
+                    'Active' => 'Active',
+                    'Wait' => 'Wait',
+                    'Draft' => 'Draft',
+                    'Rejecte' => 'Rejecte',
+                ])
+                ->options([
+                    '' => 'All',
+                    'Active' => 'Active',
+                    'Wait' => 'Wait',
+                    'Draft' => 'Draft',
+                    'Rejecte' => 'Rejecte',
+                ])
+                ->filter(function (Builder $builder, string $value) {
+                    if ($value === 'Active') {
+                        $builder->where('posts.status', 'Active'); // Specify the table name before the column name
+                    } elseif ($value === 'Wait') {
+                        $builder->where('posts.status', 'Wait');
+                    } elseif ($value === 'Draft') {
+                        $builder->where('posts.status', 'Draft');
+                    } elseif ($value === 'Rejecte') {
+                        $builder->where('posts.status', 'Rejecte');
+                    }
+                }),
         ];
     }
 }
