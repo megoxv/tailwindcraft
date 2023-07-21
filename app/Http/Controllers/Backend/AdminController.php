@@ -7,6 +7,7 @@ use App\Models\AdsTracking;
 use App\Models\Post;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
@@ -30,5 +31,21 @@ class AdminController extends Controller
 
 
         return view('admin.index', compact('users', 'active_users', 'banned_users', 'posts', 'totalClicks', 'totalClicksToday', 'totalClicksYesterday', 'totalClicks7Days', 'totalClicksThisMonth'));
+    }
+
+    public function cleanCache()
+    {
+        Artisan::call('cache:clear');
+
+        toast()->success(__('main.successfully') . ' ' . __('main.cleared_cache'))->push();
+        return redirect()->back();
+    }
+
+    public function sitemapGenerate()
+    {
+        Artisan::call('sitemap:generate');
+
+        toast()->success(__('main.successfully') . ' ' . __('main.sitemap_generate'))->push();
+        return redirect()->back();
     }
 }

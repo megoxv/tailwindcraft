@@ -42,6 +42,14 @@ class AppServiceProvider extends ServiceProvider
         ];
         Config::set('mail', $data);
 
+        $data_github = [
+            'client_id' => getSetting('github_client_id'),
+            'client_secret' => getSetting('github_client_secret'),
+            'redirect' => env('APP_URL') . '/auth/github/callback'
+        ];
+
+        Config::set('services.github', $data_github);
+
         $data_google = [
             'client_id' => getSetting('google_client_id'),
             'client_secret' => getSetting('google_client_secret'),

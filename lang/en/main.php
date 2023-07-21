@@ -327,4 +327,8 @@ return [
     'total_posts' => 'Total Posts',
     'wait' => 'Wait',
     'theme' => 'theme',
+    'successfully' => 'Successfully',
+    'cleared_cache' => 'Cleared Cache',
+    'clear_cache' => 'Clear Cache',
+    'sitemap_generate' => 'Sitemap Generate',
 ];

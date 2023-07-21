@@ -14,6 +14,7 @@ class Post extends Component
 {
     public $slug;
     public $username;
+    public $post;
     public $code;
     public $darkMode = false;
 
@@ -24,16 +25,12 @@ class Post extends Component
         $this->slug = $slug;
         $this->username = $username;
 
-        // Fetch the post based on slug and status.
         $post = PostModel::where('slug', $this->slug)
             ->where('status', 'Active')
             ->first();
 
-        if (!$post) {
-            abort(404);
-        }
-
         $this->code = $post->code;
+        $this->post = $post;
     }
 
     public function toggleLove()

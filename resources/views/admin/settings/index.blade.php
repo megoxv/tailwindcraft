@@ -273,10 +273,35 @@
                         {{-- End SEO Configuration Settings--}}
                     </div>
                     <div id="tabs-auth" class="hidden" role="tabpanel" aria-labelledby="tabs-auth-item">
-                        {{-- Google --}}
+                        {{-- github --}}
                         <div>
                             {{-- Head --}}
                             <h3 class="mb-8 text-lg font-semibold text-gray-800 dark:text-gray-200">
+                                Github
+                            </h3>
+                            {{-- End Head --}}
+                            {{-- Grid --}}
+                            <div class="mb-3">
+                                <label for="github_status" class="text-sm mb-2 text-gray-700 font-medium dark:text-white">Github Status</label>
+                                <input type="checkbox" id="github_status" value="1" name="github_status" @if(getSetting('github_status') == '1') checked @endif class="relative shrink-0 w-[3.25rem] h-7 bg-gray-100 checked:bg-none checked:bg-blue-600 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 border border-transparent ring-1 ring-transparent focus:border-blue-600 focus:ring-blue-600 ring-offset-white focus:outline-none appearance-none dark:bg-gray-700 dark:checked:bg-blue-600 dark:focus:ring-offset-gray-800 before:inline-block before:w-6 before:h-6 before:bg-white checked:before:bg-blue-200 before:trangray-x-0 checked:before:trangray-x-full rtl:checked:before:-trangray-x-full before:shadow before:rounded-full before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-gray-400 dark:checked:before:bg-blue-200">
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+                                <div>
+                                    <label for="github_client_id" class="text-sm mb-2 text-gray-700 font-medium dark:text-white">Github Client Id</label>
+                                    <input type="text" name="github_client_id" id="github_client_id" value="{{ getSetting('github_client_id') }}" class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400">
+                                </div>
+                                <div>
+                                    <label for="github_client_secret" class="text-sm mb-2 text-gray-700 font-medium dark:text-white">Github Client Secret</label>
+                                    <input type="text" name="github_client_secret" id="github_client_secret" value="{{ getSetting('github_client_secret') }}" class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400">
+                                </div>
+                            </div>
+                            {{-- End Grid --}}
+                        </div>
+                        {{-- End Google --}}
+                        {{-- Google --}}
+                        <div>
+                            {{-- Head --}}
+                            <h3 class="my-8 text-lg font-semibold text-gray-800 dark:text-gray-200">
                                 {{ __('main.google') }}
                             </h3>
                             {{-- End Head --}}

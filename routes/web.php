@@ -77,6 +77,8 @@ Route::prefix('admin')->middleware(['auth:sanctum', config('jetstream.auth_sessi
         Route::post('/ads-manager/enable/{id}', [AdManagerController::class, 'enable'])->name('ads-manager.enable');
         Route::get('/ad-banner-auto-placements', [AdManagerController::class, 'autoAds']);
         Route::post('/ad-banner-update-clicks', [AdManagerController::class, 'updateClicks']);
+        Route::post('/clean-cache', [AdminController::class, 'cleanCache'])->name('clean-cache');
+        Route::post('/sitemap-generate', [AdminController::class, 'sitemapGenerate'])->name('sitemap-generate');
     });
 
     Route::prefix('settings')->name('settings.')->group(function () {

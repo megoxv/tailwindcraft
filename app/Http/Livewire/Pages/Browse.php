@@ -19,7 +19,7 @@ class Browse extends Component
         SEOTools::opengraph()->addProperty('type', 'website');
         SEOTools::jsonLd()->addImage(getSetting('image'));
 
-        $posts = Post::where('status', 'Active')->paginate(10);
+        $posts = Post::where('status', 'Active')->paginate(20);
 
         return view('livewire.pages.browse', compact('posts'))->extends('layouts.app')->section('content');
     }

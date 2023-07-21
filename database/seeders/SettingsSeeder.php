@@ -53,6 +53,11 @@ class SettingsSeeder extends Seeder
 
         # Auth
 
+        ## Github
+        Setting::create(['key' => 'github_status', 'value' => "0"]);
+        Setting::create(['key' => 'github_client_id', 'value' => ""]);
+        Setting::create(['key' => 'github_client_secret', 'value' => ""]);
+
         ## Google
         Setting::create(['key' => 'google_status', 'value' => "0"]);
         Setting::create(['key' => 'google_client_id', 'value' => ""]);

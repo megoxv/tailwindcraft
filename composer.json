@@ -22,6 +22,7 @@
         "livewire/livewire": "^2.11",
         "rappasoft/laravel-livewire-tables": "^2.10",
         "socialiteproviders/facebook": "*",
+        "socialiteproviders/github": "*",
         "socialiteproviders/google": "*",
         "spatie/laravel-permission": "^5.8",
         "spatie/laravel-sitemap": "*",
@@ -29,6 +30,7 @@
         "usernotnull/tall-toasts": "*"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "*",
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",

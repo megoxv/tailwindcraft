@@ -17,48 +17,25 @@
                 </a>
             </li>
             @can('posts-read')
-                <li class="hs-accordion" id="posts">
-                    <a class="hs-accordion-toggle flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-gray-700 rounded-md hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-900 dark:text-gray-400 dark:hover:text-gray-300 dark:hs-accordion-active:text-white" href="javascript:;">
+                <li>
+                    <a href="{{ route('admin.posts.index') }}" class="{{ request()->is('admin/posts*')  ? "bg-gray-100  dark:bg-gray-900 dark:text-white" : 'dark:text-gray-400' }} flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 dark:hover:text-gray-300">
                         <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                             <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
                             <path d="M4.5 12.5A.5.5 0 0 1 5 12h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 10h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm1.639-3.708 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V8.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V8s1.54-1.274 1.639-1.208zM6.25 6a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5z"/>
                         </svg>
                         {{ __('main.posts') }}
-
-                        <svg class="hs-accordion-active:block ml-auto hidden w-3 h-3 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
-                            width="16" height="16" viewBox="0 0 16 16" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path d="M2 11L8.16086 5.31305C8.35239 5.13625 8.64761 5.13625 8.83914 5.31305L15 11"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-                        </svg>
-
-                        <svg class="hs-accordion-active:hidden ml-auto block w-3 h-3 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
-                            width="16" height="16" viewBox="0 0 16 16" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-                        </svg>
                     </a>
-
-                    <div id="posts-child"
-                        class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden">
-                        <ul class="pt-2 pl-2">
-                            @can('posts-read')
-                                <li>
-                                    <a href="{{ route('admin.posts.index') }}" class="{{ request()->is('admin/posts*')  ? "bg-gray-100  dark:bg-gray-900 dark:text-white" : 'dark:text-gray-400' }} flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 dark:hover:text-gray-300">
-                                        {{ __('main.posts') }}
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('categories-read')
-                                <li>
-                                    <a href="{{ route('admin.categories.index') }}" class="{{ request()->is('admin/categories*')  ? "bg-gray-100  dark:bg-gray-900 dark:text-white" : 'dark:text-gray-400' }} flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 dark:hover:text-gray-300">
-                                        {{ __('main.categories') }}
-                                    </a>
-                                </li>
-                            @endcan
-                        </ul>
-                    </div>
+                </li>
+            @endcan
+            @can('categories-read')
+                <li>
+                    <a href="{{ route('admin.categories.index') }}" class="{{ request()->is('admin/categories*')  ? "bg-gray-100  dark:bg-gray-900 dark:text-white" : 'dark:text-gray-400' }} flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 dark:hover:text-gray-300">
+                        <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M3 2v4.586l7 7L14.586 9l-7-7H3zM2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2z"></path>
+                            <path d="M5.5 5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm0 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM1 7.086a1 1 0 0 0 .293.707L8.75 15.25l-.043.043a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 0 7.586V3a1 1 0 0 1 1-1v5.086z"></path>
+                        </svg>
+                        {{ __('main.categories') }}
+                    </a>
                 </li>
             @endcan
             @can('pages-read')
@@ -135,6 +112,33 @@
                         </svg>
                         {{ __('main.settings') }}
                     </a>
+                </li>
+            @endcan
+            @can('settings-update')
+                <li>
+                    <form action="{{ route('admin.clean-cache') }}" method="POST">
+                        @csrf
+                        <button type="submit"  class="{{ request()->is('admin/cleanCache*')  ? "bg-slate-100  dark:bg-slate-900 dark:text-white" : 'dark:text-slate-400' }} w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-slate-100 dark:hover:bg-slate-900 dark:hover:text-slate-300">
+                            <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                </svg>
+                                {{ __('main.clear_cache') }}
+                            </button>
+                    </form>
+                </li>
+            @endcan
+            @can('settings-update')
+                <li>
+                    <form action="{{ route('admin.sitemap-generate') }}" method="POST">
+                        @csrf
+                        <button type="submit"  class="{{ request()->is('admin/sitemap-generate*')  ? "bg-slate-100  dark:bg-slate-900 dark:text-white" : 'dark:text-slate-400' }} w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-slate-100 dark:hover:bg-slate-900 dark:hover:text-slate-300">
+                            <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 5 7h2.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM3 11.5A1.5 1.5 0 0 1 4.5 10h1A1.5 1.5 0 0 1 7 11.5v1A1.5 1.5 0 0 1 5.5 14h-1A1.5 1.5 0 0 1 3 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 9 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"/>
+                            </svg>
+                            {{ __('main.sitemap_generate') }}
+                        </button>
+                    </form>
                 </li>
             @endcan
         </ul>
