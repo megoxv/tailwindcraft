@@ -93,6 +93,5 @@ class SettingsSeeder extends Seeder
         # Code
         Setting::create(['key' => 'header_code', 'value' => ""]);
         Setting::create(['key' => 'footer_code', 'value' => ""]);
-        // Setting::create(['key' => 'robots_txt', 'value' => "User-agent: *\nSitemap: " . env('APP_URL') . "/sitemap.xml\nAllow: /"]);
     }
 }

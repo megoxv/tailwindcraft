@@ -1,7 +1,7 @@
 <section class="container px-2 lg:px-8 transition-all duration-200 mx-auto py-5">
         <div class="container mx-auto pt-6 pb-[100px]">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-7">
-                <div class="md:col-span-1 hidden md:block">
+                <div class="md:col-span-1 hidden lg:block">
                     {{-- Sidebar --}}
                     @include('front.layouts.sidebar')
                 </div>
@@ -11,7 +11,7 @@
                         @include('front.layouts.mobile-sidebar')
                         <div class="flex items-center justify-between">
                             {{-- Button Open moobile sidebar --}}
-                            <div class="w-full ">
+                            <div class="w-full">
                                 <button data-target-drawer="explore-all-filter" class="drawer-handler group flex md:hidden max-w-[32px] h-8 w-full items-center justify-center rounded-full bg-transparent hover:bg-gray-800 border border-gray-200 hover:border-gray-800">
                                     <svg class="w-[14px] h-[14px] fill-gray-400 group-hover:fill-white" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                                         <path d="M3 2v4.586l7 7L14.586 9l-7-7H3zM2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2z"/>

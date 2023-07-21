@@ -39,6 +39,7 @@ class CategoryController extends Controller
         $request->validate([
             'name' => "required|max:190",
             'slug' => "required",
+            'title' => "nullable|max:60",
             'description' => "nullable|max:10000",
         ]);
 
@@ -52,6 +53,7 @@ class CategoryController extends Controller
         Category::create([
             'name' => $request->name,
             'slug' => $slug,
+            'title' => $request->title,
             'description' => $request->description,
         ]);
 
@@ -71,12 +73,14 @@ class CategoryController extends Controller
         $request->validate([
             'name' => "required|max:190",
             'slug' => "required|unique:categories,slug," . $category->id,
+            'title' => "nullable|max:60",
             'description' => "nullable|max:10000",
         ]);
 
         $category->update([
             'name' => $request->name,
             'slug' => Str::slug($request->slug),
+            'title' => $request->title,
             'description' => $request->description,
         ]);
 

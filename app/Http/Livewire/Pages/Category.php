@@ -28,12 +28,12 @@ class Category extends Component
         }
 
         // Set the meta tags for the article
-        SEOMeta::setTitle($category->name)
+        SEOMeta::setTitle($category->title)
             ->setDescription($category->description)
             ->setCanonical(route('category.show', $category->slug));
 
         // Set the OpenGraph tags for the category
-        OpenGraph::setTitle($category->name)
+        OpenGraph::setTitle($category->title)
             ->setDescription($category->description)
             ->setUrl(route('category.show', $category->slug))
             ->addProperty('type', 'category');

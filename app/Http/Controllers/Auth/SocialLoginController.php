@@ -39,8 +39,12 @@ class SocialLoginController extends Controller
 
                 $user = User::create([
                     'name' => $provider_user->name,
+                    'username' => $provider_user->nickname,
                     'email' => $provider_user->email,
                     'profile_photo' => $provider_user->avatar,
+                    'github' => $provider_user->nickname,
+                    'website' => $provider_user->user['blog'],
+                    'bio' => $provider_user->user['bio'],
                     'password' => Hash::make(Str::random(12)),
                     'email_verified_at' => \Carbon\Carbon::now(),
                     'provider' => $provider,

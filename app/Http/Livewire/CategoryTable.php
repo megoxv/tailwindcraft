@@ -25,10 +25,10 @@ class CategoryTable extends DataTableComponent
             Column::make(__('main.name'), "name")
                 ->sortable()
                 ->searchable(),
-            Column::make(__('main.slug'), "slug")
+            Column::make(__('main.title'), "title")
                 ->sortable()
                 ->searchable(),
-            Column::make(__('main.description'), "description")
+            Column::make(__('main.slug'), "slug")
                 ->sortable()
                 ->searchable(),
             Column::make("Created at", "created_at")

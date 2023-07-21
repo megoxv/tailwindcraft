@@ -27,8 +27,7 @@
                 <p class="text-gray-400">Categories</p>
             </div>
         </div>
-        <div
-            class="space-y-3 pt-4 w-full overflow-hidden">
+        <div class="space-y-3 pt-4 w-full max-h-[90vh] overflow-auto">
             <div class="px-4">
                 <a href="{{ route('home') }}" class="{{ request()->is('/')  ? 'text-white' : 'text-gray-500' }} font-medium flex items-center justify-between cursor-pointer">
                     All 
