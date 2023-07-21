@@ -13,7 +13,6 @@ class Browse extends Component
 
     public function render()
     {
-        SEOTools::setTitle(getSetting('seo_title'));
         SEOTools::setDescription(getSetting('seo_description'));
         SEOTools::opengraph()->setUrl(getSetting('website_url'));
         SEOTools::opengraph()->addProperty('type', 'website');
