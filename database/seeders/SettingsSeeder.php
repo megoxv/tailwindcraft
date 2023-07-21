@@ -16,8 +16,8 @@ class SettingsSeeder extends Seeder
     public function run()
     {
         # General
-        Setting::create(['key' => 'website_name', 'value' => "Dashboard"]);
-        Setting::create(['key' => 'website_url', 'value' => "https://name.com"]);
+        Setting::create(['key' => 'website_name', 'value' => "Tailwind Craft"]);
+        Setting::create(['key' => 'website_url', 'value' => "https://tailwindcraft.com"]);
         Setting::create(['key' => 'website_email_address', 'value' => "admin@site.com"]);
         Setting::create(['key' => 'default_new_user_role', 'value' => "user"]);
         Setting::create(['key' => 'user_registration', 'value' => "1"]);
@@ -34,17 +34,13 @@ class SettingsSeeder extends Seeder
         Setting::create(['key' => 'analytics_tracking_id', 'value' => ""]);
 
         # SEO Configuration
-        Setting::create(['key' => 'seo_title', 'value' => "Dashboard"]);
-        Setting::create(['key' => 'seo_author', 'value' => "Abdelmjid Saber"]);
+        Setting::create(['key' => 'seo_title', 'value' => "Tailwind Craft"]);
+        Setting::create(['key' => 'seo_author', 'value' => "Tailwind Craft"]);
         Setting::create(['key' => 'seo_keywords', 'value' => ""]);
         Setting::create(['key' => 'seo_description', 'value' => ""]);
-        Setting::create(['key' => 'social_title', 'value' => "Dashboard"]);
+        Setting::create(['key' => 'social_title', 'value' => "Tailwind Craft"]);
         Setting::create(['key' => 'social_description', 'value' => ""]);
         Setting::create(['key' => 'image', 'value' => ""]);
-        Setting::create(['key' => 'blog_page_title', 'value' => "Blog"]);
-        Setting::create(['key' => 'blog_page_description', 'value' => ""]);
-        Setting::create(['key' => 'contact_page_title', 'value' => "Contact"]);
-        Setting::create(['key' => 'contact_page_description', 'value' => "We'd love to talk about how we can help you."]);
 
         # Logo & Favicon
         Setting::create(['key' => 'light_logo', 'value' => ""]);

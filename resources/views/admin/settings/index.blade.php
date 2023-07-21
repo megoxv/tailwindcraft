@@ -244,26 +244,6 @@
                                 </div>
                             </div>
                             <div class="mt-4 space-y-6">
-                                <div class="space-y-3">
-                                    <div>
-                                        <label for="blog_page_title" class="text-sm mb-2 text-gray-700 font-medium dark:text-white">{{ __('main.blog_page_title') }}</label>
-                                        <input type="text" name="blog_page_title" id="blog_page_title" value="{{ getSetting('blog_page_title') }}" class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400">
-                                    </div>
-                                    <div>
-                                        <label for="blog_page_description" class="text-sm mb-2 text-gray-700 font-medium dark:text-white">{{ __('main.blog_page_description') }}</label>
-                                        <textarea id="blog_page_description" name="blog_page_description" rows="4" class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400">{!! getSetting('blog_page_description') !!}</textarea>
-                                    </div>
-                                </div>
-                                <div class="space-y-3">
-                                    <div>
-                                        <label for="contact_page_title" class="text-sm mb-2 text-gray-700 font-medium dark:text-white">{{ __('main.contact_page_title') }}</label>
-                                        <input type="text" name="contact_page_title" id="contact_page_title" value="{{ getSetting('contact_page_title') }}" class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400">
-                                    </div>
-                                    <div>
-                                        <label for="contact_page_description" class="text-sm mb-2 text-gray-700 font-medium dark:text-white">{{ __('main.contact_page_description') }}</label>
-                                        <textarea id="contact_page_description" name="contact_page_description" rows="4" class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400">{!! getSetting('contact_page_description') !!}</textarea>
-                                    </div>
-                                </div>
                             </div>
                             {{-- End Grid --}}
                             <div class="mt-6 grid">

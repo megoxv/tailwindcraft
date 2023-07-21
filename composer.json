@@ -10,7 +10,6 @@
     "require": {
         "php": "^8.0.2",
         "artesaos/seotools": "*",
-        "froiden/laravel-installer": "*",
         "google/recaptcha": "*",
         "guzzlehttp/guzzle": "^7.2",
         "joedixon/laravel-translation": "^2.1",

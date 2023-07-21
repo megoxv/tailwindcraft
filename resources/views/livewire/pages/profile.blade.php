@@ -192,7 +192,7 @@
                                         <div class="col-span-3">
                                             <div>
                                                 <img src="{{ asset("assets/images/empty.svg") }}" alt="Empty" loading="lazy" class="w-80 h-80 mx-auto" >
-                                                <p class="text-gray-400 text-center">There are no components or UI elements. Let's create the first one.</p>
+                                                <p class="text-gray-400 text-center">There are no components. Let's create the first one.</p>
                                                 <a href="{{ route('create.show') }}" class="w-fit mt-6 mx-auto px-4 md:px-8 py-2 md:py-4 rounded-md font-medium text-base flex items-center justify-center bg-primary-500 text-white hover:bg-primary-600 transition-colors duration-200">Create</a>    
                                             </div>
                                         </div>
@@ -205,7 +205,7 @@
                                     <div class="col-span-3">
                                         <div>
                                             <img src="{{ asset("assets/images/empty.svg") }}" alt="Empty" loading="lazy" class="w-80 h-80 mx-auto" >
-                                            <p class="text-gray-400 text-center">There are no components or UI elements. Let's create the first one.</p>
+                                            <p class="text-gray-400 text-center">There are no components. Let's create the first one.</p>
                                             <a href="{{ route('create.show') }}" class="w-fit mt-6 mx-auto px-4 md:px-8 py-2 md:py-4 rounded-md font-medium text-base flex items-center justify-center bg-primary-500 text-white hover:bg-primary-600 transition-colors duration-200">Create</a>    
                                         </div>
                                     </div>

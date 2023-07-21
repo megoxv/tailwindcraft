@@ -199,7 +199,6 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
-        Froiden\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
     ],
 
     /*

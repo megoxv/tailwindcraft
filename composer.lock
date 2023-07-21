@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1d07d4176ed616a87268602e2d7aa15d",
+    "content-hash": "966ebb31689e49cd99c6845d234e86da",
     "packages": [
         {
             "name": "artesaos/seotools",
@@ -607,46 +607,6 @@
                 }
             ],
             "time": "2023-01-14T14:17:03+00:00"
-        },
-        {
-            "name": "froiden/laravel-installer",
-            "version": "1.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Froiden/laravel-installer.git",
-                "reference": "614c2402e7a6ef9d79381b179ef2c629fbf1cff6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Froiden/laravel-installer/zipball/614c2402e7a6ef9d79381b179ef2c629fbf1cff6",
-                "reference": "614c2402e7a6ef9d79381b179ef2c629fbf1cff6",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/functions.php"
-                ],
-                "psr-4": {
-                    "Froiden\\LaravelInstaller\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ajay Kumar Choudhary",
-                    "email": "ajay@froiden.com"
-                }
-            ],
-            "description": "Laravel web installer",
-            "support": {
-                "issues": "https://github.com/Froiden/laravel-installer/issues",
-                "source": "https://github.com/Froiden/laravel-installer/tree/1.7.0"
-            },
-            "time": "2023-03-20T16:00:33+00:00"
         },
         {
             "name": "fruitcake/php-cors",

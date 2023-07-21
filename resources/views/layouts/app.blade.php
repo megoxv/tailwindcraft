@@ -26,7 +26,7 @@
         @stack('styles')
         {!! getSetting('header_code') !!}
     </head>
-    <body class="font-prompt antialiased">
+    <body class="font-sans antialiased">
         <livewire:toasts />
         <div class="bg-dark">
             {{-- Navbar --}}

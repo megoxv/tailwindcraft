@@ -17,8 +17,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                'exa': ['Lexend Exa', 'system-ui'],
-                'prompt': ['Prompt', 'system-ui'],
+                'sans': ['Noto Sans', 'system-ui'],
             },
             boxShadow: {
                 'out': '0 2px 0 0 rgba(255,255,255,1)',

@@ -3,7 +3,7 @@
         {{-- Head --}}
         <div>
             <h1 class="text-white text-2xl md:text-3xl font-bold mb-1">Browse all</h1>
-            <p class="font-normal text-gray-400 md:w-[600px]">Open-Source UI elements made with Tailwind CSS</p>
+            <p class="font-normal text-gray-400 md:w-[600px]">Open-Source UI Components made with Tailwind CSS</p>
         </div>
         {{-- End Head --}}
         <div class="container mx-auto pt-6 pb-[100px]">
@@ -36,7 +36,7 @@
                                 </select>
                             </div> --}}
                         </div>
-                        {{-- Elements --}}
+                        {{-- Components  --}}
                         <div>
                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 mt-7 mb-12">
                                 @forelse ($posts as $post)
@@ -45,14 +45,14 @@
                                     <div class="col-span-3">
                                         <div>
                                             <img src="{{ asset("assets/images/empty.svg") }}" alt="Empty" loading="lazy" class="w-80 h-80 mx-auto" >
-                                            <p class="text-gray-400 text-center">There are no components or UI elements. Let's create the first one.</p>
+                                            <p class="text-gray-400 text-center">There are no components. Let's create the first one.</p>
                                             <a href="{{ route('create.show') }}" class="w-fit mt-6 mx-auto px-4 md:px-8 py-2 md:py-4 rounded-md font-medium text-base flex items-center justify-center bg-primary-500 text-white hover:bg-primary-600 transition-colors duration-200">Create</a>    
                                         </div>
                                     </div>
                                 @endforelse
                             </div>
                         </div>
-                        {{-- End Elements --}}
+                        {{-- End Components  --}}
                         {{-- Pagination --}}
                         {{ $posts->links() }}
                         {{-- End Pagination --}}

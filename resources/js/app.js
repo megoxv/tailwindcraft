@@ -3,7 +3,6 @@ import './ad-banner-manager';
 import './ad-banner';
 import '/public/assets/js/main'
 import '/public/assets/js/code-editor'
-import '/public/plugins/jquery/jquery-3.6.0.min'
 
 import Alpine from 'alpinejs';
 import focus from '@alpinejs/focus';
