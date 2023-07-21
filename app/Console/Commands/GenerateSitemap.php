@@ -34,7 +34,7 @@ class GenerateSitemap extends Command
     {
         $sitemap = Sitemap::create();
 
-        $posts = Post::select(['slug', 'updated_at'])->where('status', 'Active')->get();
+        $posts = Post::where('status', 'Active')->get();
         $categories = Category::select(['slug', 'updated_at'])->get();
         $pages = Page::select(['slug', 'updated_at'])->where('status', 1)->get();
 
