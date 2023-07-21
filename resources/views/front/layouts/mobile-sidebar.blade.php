@@ -21,13 +21,13 @@
         <div class="px-4 pt-6 max-h-[100vh] transition-all duration-200">
             <ul>
                 <li class="flex items-center mb-3">
-                    <a href="{{ route('home') }}" class="{{ request()->is('/')  ? 'text-white' : 'text-gray-500' }} font-medium flex items-center justify-between cursor-pointer">
+                    <a href="{{ route('home') }}" class="{{ request()->is('/')  ? 'text-white' : 'text-gray-400' }} font-medium flex items-center justify-between cursor-pointer">
                         All 
                     </a>
                 </li>
                 @foreach ($categories as $category )
                     <li class="flex items-center mb-3">
-                        <a href="{{ route('category.show', $category->slug) }}" class="{{ request()->is($category->slug)  ? 'text-white' : 'text-gray-500' }} font-medium flex items-center justify-between cursor-pointer">
+                        <a href="{{ route('category.show', $category->slug) }}" class="{{ request()->is($category->slug)  ? 'text-white' : 'text-gray-400' }} font-medium flex items-center justify-between cursor-pointer">
                             {{ $category->name }}
                         </a>
                     </li>

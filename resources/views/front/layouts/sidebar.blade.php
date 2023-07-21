@@ -35,7 +35,7 @@
             </div>
             @foreach ($categories as $category )
                 <div class="px-4">
-                    <a href="{{ route('category.show', $category->slug) }}" class="{{ request()->is($category->slug)  ? 'text-white' : 'text-gray-500' }} font-medium flex items-center justify-between cursor-pointer">
+                    <a href="{{ route('category.show', $category->slug) }}" class="{{ request()->is($category->slug)  ? 'text-white' : 'text-gray-400' }} font-medium flex items-center justify-between cursor-pointer">
                         {{ $category->name }}
                     </a>
                 </div>
