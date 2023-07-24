@@ -1,6 +1,6 @@
 <div data-placement="left" data-drawer-width="220px" data-drawer-name="explore-all-filter" class="drawer shadow-hover fixed top-0 h-screen z-[100] overflow-hidden transition-all duration-300 w-0 left-0">
     @php
-        $categories = App\Models\Category::select('name', 'slug')->get();
+        $categories = App\Models\Category::select('name', 'slug')->orderBy('name')->get();
     @endphp
     <div class="w-[220px] h-full overflow-y-auto bg-dark">
         <div class="p-4 flex items-center justify-between border-b border-gray-700">

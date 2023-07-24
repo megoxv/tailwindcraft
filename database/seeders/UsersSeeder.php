@@ -15,15 +15,20 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        $users = User::count();
-        if($users==0)
-        $user = User::create([
-            'name'=>"Admin",
-            'username'=>"admin",
-            'email'=>'admin@admin.com',
-            'email_verified_at'=>date("Y-m-d h:i:s"), 
-            'password'=>bcrypt('password')
-        ]);
-        $user->syncRoles(1);
+        $existingUser = User::where('username', 'admin')->first();
+
+        if (!$existingUser) {
+            $user = User::create([
+                'name' => "Admin",
+                'username' => "admin",
+                'email' => 'admin@admin.com',
+                'email_verified_at' => date("Y-m-d h:i:s"),
+                'password' => bcrypt('password')
+            ]);
+
+            $user->syncRoles(1);
+        }
+
+        User::factory()->count(50)->create();
     }
 }

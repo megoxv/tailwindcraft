@@ -106,7 +106,7 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 my-12">
                             @auth
                                 @if (auth()->user()->username === $user->username)
-                                    @forelse ($user->posts as $post)
+                                    @forelse ($user->posts()->orderBy('id', 'DESC')->get() as $post)
                                         <div class="group p-4 relative text-gray-300 bg-gray-25 border border-gray-800 rounded-lg shadow-outline hover:shadow-hover hover:outline hover:outline-2 hover:outline-primary-500 truncate">
                                             <a href="{{ route('post.show', ['username' => $post->user->username, 'slug' => $post->slug]) }}" class="opacity-0 group-hover:opacity-100 absolute top-7 left-7 px-4 py-1 rounded-md font-light text-base flex items-center justify-center bg-primary-500 text-white hover:bg-primary-600 transition-all duration-200 z-10">
                                                 <svg class="mr-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -173,7 +173,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <iframe class="{{ $post->theme === 'Dark' ? 'bg-gray-25' :  'bg-[#E8E8E8]'}} w-full h-56 object-cover rounded-lg mb-4 flex items-end justify-center" loading="lazy" sandbox="allow-scripts" srcdoc="<head><script src='{{ asset('plugins/tailwindcss/tailwindcss.js') }}'></script></head><body class='h-screen flex items-center justify-center'><main>{{ $post->code }}</main></body>"></iframe>
+                                            <iframe class="{{ $post->theme === 'Dark' ? 'bg-gray-25' :  'bg-[#E8E8E8]'}} w-full h-56 object-cover rounded-lg mb-4 flex items-end justify-center" loading="lazy" sandbox="allow-scripts" srcdoc="<head><script src='{{ asset('plugins/tailwindcss/tailwindcss.js') }}'></script><script> tailwind.config = { darkMode: 'class', } </script></head><body class='{{ $post->theme === 'Dark' ? 'dark' : 'light' }} h-screen flex items-center justify-center'><main>{{ $post->code }}</main></body>"></iframe>
                                             <div class="flex items-center justify-between">
                                                 <a href="{{ route('profile.show', $post->user->username) }}" class="font-normal text-white mr-2">{{ $post->user->name }}</a>
                                                 <p class="text-white text-sm py-2 flex items-center gap-3">
@@ -199,7 +199,7 @@
                                     @endforelse
                                 @endif
                             @else
-                                @forelse ($user->posts->where('status', 'Active') as $post)
+                                @forelse ($user->posts()->where('status', 'Active')->orderBy('created_at', 'DESC')->get() as $post)
                                     @livewire('components.post', ['post' => $post])
                                 @empty
                                     <div class="col-span-3">
@@ -211,7 +211,6 @@
                                     </div>
                                 @endforelse
                             @endauth
-
                         </div>
                     </div>
                 </div>
