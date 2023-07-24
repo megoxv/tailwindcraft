@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             UsersSeeder::class,
             SettingsSeeder::class,
             MenusSeeder::class,
+            PostsSeeder::class,
         ]);
     }
 }

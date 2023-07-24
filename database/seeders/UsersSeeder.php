@@ -22,13 +22,13 @@ class UsersSeeder extends Seeder
                 'name' => "Admin",
                 'username' => "admin",
                 'email' => 'admin@admin.com',
-                'email_verified_at' => date("Y-m-d h:i:s"),
+                'email_verified_at' => now(),
                 'password' => bcrypt('password')
             ]);
 
             $user->syncRoles(1);
         }
 
-        User::factory()->count(50)->create();
+        User::factory()->count(100)->create();
     }
 }

@@ -40,7 +40,7 @@
                         <div>
                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 mt-7 mb-12">
                                 @forelse ($posts as $post)
-                                    @livewire('components.post', ['post' => $post])
+                                    <livewire:components.post :post="$post" :wire:key="'item-'.$post->id"> 
                                 @empty
                                     <div class="col-span-3">
                                         <div>
