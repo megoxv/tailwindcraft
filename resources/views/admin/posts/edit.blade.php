@@ -40,7 +40,7 @@
                     </div>
                     {{-- Preview Code --}}
                     <div class="max-h-[640px] h-full p-4 relative bg-gray-25 border border-gray-800 rounded-lg shadow-outline">
-                        <iframe class="{{ $post->theme == 'Dark'  ? 'bg-[#24292E]' : 'bg-[#E8E8E8]'}} w-full h-full object-cover rounded-lg mb-4 flex items-end justify-center" loading="lazy" sandbox="allow-scripts" srcdoc="<head><script src='{{ asset('plugins/tailwindcss/tailwindcss.js') }}'></script><script> tailwind.config = { darkMode: 'class', } </script></head><body class='h-screen flex items-center justify-center'>{{ $post->code }}</body>"></iframe>
+                        <iframe class="{{ $post->theme == 'Dark'  ? 'bg-[#24292E]' : 'bg-[#E8E8E8]'}} w-full h-full object-cover rounded-lg mb-4 flex items-end justify-center" loading="lazy" sandbox="allow-scripts" srcdoc="<head><script src='{{ asset('plugins/tailwindcss/tailwindcss.js') }}'></script><script> tailwind.config = { darkMode: 'class', } </script></head><body class='h-screen flex items-center justify-center'><main>{{ $post->code }}</main></body>"></iframe>
                     </div>
                     {{-- Editor --}}
                     <div class="max-h-[640px] overflow-y-scroll bg-[#24292E] border border-gray-800 rounded-lg shadow-outline">

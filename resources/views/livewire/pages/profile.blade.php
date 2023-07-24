@@ -173,7 +173,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <iframe class="{{ $post->theme === 'Dark' ? 'bg-gray-25' :  'bg-[#E8E8E8]'}} w-full h-56 object-cover rounded-lg mb-4 flex items-end justify-center" loading="lazy" sandbox="allow-scripts" srcdoc="<head><script src='{{ asset('plugins/tailwindcss/tailwindcss.js') }}'></script></head><body class='h-screen flex items-center justify-center'>{{ $post->code }}</body>"></iframe>
+                                            <iframe class="{{ $post->theme === 'Dark' ? 'bg-gray-25' :  'bg-[#E8E8E8]'}} w-full h-56 object-cover rounded-lg mb-4 flex items-end justify-center" loading="lazy" sandbox="allow-scripts" srcdoc="<head><script src='{{ asset('plugins/tailwindcss/tailwindcss.js') }}'></script></head><body class='h-screen flex items-center justify-center'><main>{{ $post->code }}</main></body>"></iframe>
                                             <div class="flex items-center justify-between">
                                                 <a href="{{ route('profile.show', $post->user->username) }}" class="font-normal text-white mr-2">{{ $post->user->name }}</a>
                                                 <p class="text-white text-sm py-2 flex items-center gap-3">

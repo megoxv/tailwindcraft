@@ -23,14 +23,13 @@
     ::-webkit-scrollbar {
         width: 12px;
     }
-    
+
     ::-webkit-scrollbar-track {
         background-color: #131315;
-        border-radius: 30px;
     }
-    
+
     ::-webkit-scrollbar-thumb {
-        background-color: #222224;
+        background-color: #24292E;
         border-radius: 30px;
     }
 }
