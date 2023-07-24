@@ -12,6 +12,13 @@ class Category extends Component
 {
     use WithPagination;
 
+    public $perPage = 12;
+
+    public function loadMore()
+    {
+        $this->perPage += 12;
+    }
+
     public $slug;
 
     public function mount($slug)
@@ -38,7 +45,7 @@ class Category extends Component
             ->setUrl(route('category.show', $category->slug))
             ->addProperty('type', 'category');
 
-        $posts = $category->posts()->where('status', 'Active')->inRandomOrder()->paginate(20);
+        $posts = $category->posts()->where('status', 'Active')->inRandomOrder()->paginate($this->perPage);
 
         return view('livewire.pages.category', compact('category', 'posts'))->extends('layouts.app')->section('content');
     }

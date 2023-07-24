@@ -11,6 +11,13 @@ class Browse extends Component
 {
     use WithPagination;
 
+    public $perPage = 12;
+
+    public function loadMore()
+    {
+        $this->perPage += 12;
+    }
+
     public function render()
     {
         SEOTools::setDescription(getSetting('seo_description'));
@@ -18,7 +25,7 @@ class Browse extends Component
         SEOTools::opengraph()->addProperty('type', 'website');
         SEOTools::jsonLd()->addImage(getSetting('image'));
 
-        $posts = Post::where('status', 'Active')->inRandomOrder()->paginate(20);
+        $posts = Post::where('status', 'Active')->inRandomOrder()->paginate($this->perPage);
 
         return view('livewire.pages.browse', compact('posts'))->extends('layouts.app')->section('content');
     }

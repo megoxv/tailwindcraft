@@ -1,4 +1,4 @@
-<section class="container px-2 lg:px-8 transition-all duration-200 mx-auto py-5">
+<section class="container px-2 lg:px-8 transition-all duration-200 mx-auto py-5" x-data="{ sidebarOpen: false }">
         <div class="container mx-auto pt-6 pb-[100px]">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-7">
                 <div class="md:col-span-1 hidden lg:block">
@@ -12,7 +12,7 @@
                         <div class="flex items-center justify-between">
                             {{-- Button Open moobile sidebar --}}
                             <div class="w-full">
-                                <button data-target-drawer="explore-all-filter" class="drawer-handler group flex md:hidden max-w-[32px] h-8 w-full items-center justify-center rounded-full bg-transparent hover:bg-gray-800 border border-gray-200 hover:border-gray-800">
+                                <button x-on:click="sidebarOpen = true" class="group flex md:hidden max-w-[32px] h-8 w-full items-center justify-center rounded-full bg-transparent hover:bg-gray-800 border border-gray-200 hover:border-gray-800">
                                     <svg class="w-[14px] h-[14px] fill-gray-400 group-hover:fill-white" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                                         <path d="M3 2v4.586l7 7L14.586 9l-7-7H3zM2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2z"/>
                                         <path d="M5.5 5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm0 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM1 7.086a1 1 0 0 0 .293.707L8.75 15.25l-.043.043a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 0 7.586V3a1 1 0 0 1 1-1v5.086z"/>
@@ -103,10 +103,11 @@
                             </div>
                         </div>
                         {{-- End Author Info --}}
+                        {{-- Components  --}}
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 my-12">
                             @auth
                                 @if (auth()->user()->username === $user->username)
-                                    @forelse ($user->posts()->orderBy('id', 'DESC')->get() as $post)
+                                    @forelse ($profilePosts as $post)
                                         <div class="group p-4 relative text-gray-300 bg-gray-25 border border-gray-800 rounded-lg shadow-outline hover:shadow-hover hover:outline hover:outline-2 hover:outline-primary-500 truncate">
                                             <a href="{{ route('post.show', ['username' => $post->user->username, 'slug' => $post->slug]) }}" class="opacity-0 group-hover:opacity-100 absolute top-7 left-7 px-4 py-1 rounded-md font-light text-base flex items-center justify-center bg-primary-500 text-white hover:bg-primary-600 transition-all duration-200 z-10">
                                                 <svg class="mr-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -161,7 +162,7 @@
                                                             <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"  fill="#fff"/>
                                                         </svg>
                                                     </button>
-                                                    <div x-show="open" @click.away="open = false" class="absolute right-7 top-5 min-w-[10rem] bg-dark shadow-lg rounded-lg p-2 mt-2 divide-y border border-gray-700 divide-gray-700 z-50">
+                                                    <div x-show="open" @click.away="open = false" x-cloak x-transition class="absolute right-7 top-5 min-w-[10rem] bg-dark shadow-lg rounded-lg p-2 mt-2 divide-y border border-gray-700 divide-gray-700 z-50">
                                                         <div class="py-2 first:pt-0 last:pb-0">
                                                             <a href="{{ route('edit.show', $post->slug) }}" class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-400 hover:bg-gray-25 hover:text-white focus:ring-2 focus:ring-primary-500">
                                                                 Edit
@@ -199,7 +200,7 @@
                                     @endforelse
                                 @endif
                             @else
-                                @forelse ($user->posts()->where('status', 'Active')->orderBy('created_at', 'DESC')->get() as $post)
+                                @forelse ($posts as $post)
                                     @livewire('components.post', ['post' => $post])
                                 @empty
                                     <div class="col-span-3">
@@ -212,6 +213,40 @@
                                 @endforelse
                             @endauth
                         </div>
+                        {{-- End Components  --}}
+                        @auth
+                            @if (auth()->user()->username === $user->username)
+                                {{-- Load More --}}
+                                @if($profilePosts->hasMorePages())
+                                    <button wire:click.prevent="loadMore" class="mx-auto px-4 md:px-8 py-2 md:py-4 rounded-md font-medium text-base flex items-center justify-center bg-primary-500 text-white hover:bg-primary-600 transition-colors duration-200">
+                                        <span wire:loading.remove>Load more</span>
+                                        <div wire:loading wire:loading.class="!flex items-center">
+                                            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                            </svg>
+                                            <span>Processing...</span>
+                                        </div>
+                                    </button>
+                                @endif
+                                {{-- Load More --}}
+                            @endif
+                        @else
+                            {{-- Load More --}}
+                            @if($posts->hasMorePages())
+                                <button wire:click.prevent="loadMore" class="mx-auto px-4 md:px-8 py-2 md:py-4 rounded-md font-medium text-base flex items-center justify-center bg-primary-500 text-white hover:bg-primary-600 transition-colors duration-200">
+                                    <span wire:loading.remove>Load more</span>
+                                    <div wire:loading wire:loading.class="!flex items-center">
+                                        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>
+                                        <span>Processing...</span>
+                                    </div>
+                                </button>
+                            @endif
+                            {{-- Load More --}}
+                        @endauth
                     </div>
                 </div>
             </div>

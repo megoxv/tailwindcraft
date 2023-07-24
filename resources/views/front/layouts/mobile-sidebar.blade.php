@@ -1,4 +1,4 @@
-<div data-placement="left" data-drawer-width="220px" data-drawer-name="explore-all-filter" class="drawer shadow-hover fixed top-0 h-screen z-[100] overflow-hidden transition-all duration-300 w-0 left-0">
+<div x-show="sidebarOpen" x-on:click.away="sidebarOpen = false" x-cloak x-transition class="shadow-hover fixed top-0 h-screen z-[100] overflow-hidden transition-all duration-300 left-0">
     @php
         $categories = App\Models\Category::select('name', 'slug')->orderBy('name')->get();
     @endphp
@@ -11,7 +11,7 @@
                 </svg>
                 <p class="text-gray-400">Categories</p>
             </div>
-            <button data-target-drawer="explore-collection" class="drawer-handler">
+            <button x-on:click="sidebarOpen = false"  class="drawer-handler">
                 <svg class="w-[14px] h-[14px] fill-gray-400 mr-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                     <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>

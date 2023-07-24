@@ -9,7 +9,6 @@ use Carbon\Carbon;
 
 class Helper
 {
-
     public function updateClicks($slug)
     {
         $ad = AdsManager::where('slug', $slug)->firstOrFail();
@@ -35,6 +34,4 @@ class Helper
             ]);
         }
     }
-
-    
 }

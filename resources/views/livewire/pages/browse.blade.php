@@ -1,4 +1,4 @@
-<section class="container px-2 lg:px-8 transition-all duration-200 mx-auto py-5">
+<section class="container px-2 lg:px-8 transition-all duration-200 mx-auto py-5" x-data="{ sidebarOpen: false }">
     <div>
         {{-- Head --}}
         <div>
@@ -16,7 +16,7 @@
                         @include('front.layouts.mobile-sidebar')
                         <div class="flex items-center justify-between md:justify-end">
                             <div class="w-full block lg:hidden">
-                                <button data-target-drawer="explore-all-filter" class="drawer-handler group max-w-[32px] h-8 w-full flex items-center justify-center rounded-full bg-transparent hover:bg-gray-800 border border-gray-200 hover:border-gray-800">
+                                <button x-on:click="sidebarOpen = true" class="group max-w-[32px] h-8 w-full flex items-center justify-center rounded-full bg-transparent hover:bg-gray-800 border border-gray-200 hover:border-gray-800">
                                     <svg class="w-[14px] h-[14px] fill-gray-400 group-hover:fill-white" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                                         <path d="M3 2v4.586l7 7L14.586 9l-7-7H3zM2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2z"/>
                                         <path d="M5.5 5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm0 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM1 7.086a1 1 0 0 0 .293.707L8.75 15.25l-.043.043a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 0 7.586V3a1 1 0 0 1 1-1v5.086z"/>
@@ -53,9 +53,20 @@
                             </div>
                         </div>
                         {{-- End Components  --}}
-                        {{-- Pagination --}}
-                        {{ $posts->links() }}
-                        {{-- End Pagination --}}
+                        {{-- Load More --}}
+                        @if($posts->hasMorePages())
+                            <button wire:click.prevent="loadMore" class="mx-auto px-4 md:px-8 py-2 md:py-4 rounded-md font-medium text-base flex items-center justify-center bg-primary-500 text-white hover:bg-primary-600 transition-colors duration-200">
+                                <span wire:loading.remove>Load more</span>
+                                <div wire:loading wire:loading.class="!flex items-center">
+                                    <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                    <span>Processing...</span>
+                                </div>
+                            </button>
+                        @endif
+                        {{-- Load More --}}
                     </div>
                 </div>
             </div>

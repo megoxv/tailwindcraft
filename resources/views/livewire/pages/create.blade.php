@@ -43,7 +43,7 @@
             $categories = App\Models\Category::get();
         @endphp
         {{-- Modal Submit for review --}}
-        <div x-show="submitModal" class="fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-50">
+        <div x-show="submitModal" x-cloak x-transition class="fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-50">
             <div class="ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto" @click.away="submitModal = false" x-transition:enter="motion-safe:ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
                 <div class="relative flex flex-col bg-dark shadow-lg rounded-xl">
                     <div class="absolute top-2 right-2">
@@ -86,7 +86,7 @@
         {{-- End Modal Submit for review --}}
         
         {{-- End Modal Save as a draft --}}
-        <div x-show="draftModal" class="fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-50">
+        <div x-show="draftModal" x-cloak x-transition class="fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-50">
             <div class="ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto" @click.away="draftModal = false" x-transition:enter="motion-safe:ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
                 <div class="relative flex flex-col bg-dark shadow-lg rounded-xl">
                     <div class="absolute top-2 right-2">

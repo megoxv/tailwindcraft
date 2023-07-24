@@ -42,7 +42,7 @@
             $categories = App\Models\Category::get();
         @endphp
         {{-- Modal Update --}}
-        <div x-show="updateModal" class="fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-50">
+        <div x-show="updateModal" x-cloak x-transition class="fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-50">
             <div class="ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto" @click.away="updateModal = false" x-transition:enter="motion-safe:ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
                 <div class="relative flex flex-col bg-dark shadow-lg rounded-xl">
                     <div class="absolute top-2 right-2">
