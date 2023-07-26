@@ -189,11 +189,6 @@ return [
             'ads-manager' => 'c,r,u,d',
             'pages' => 'c,r,u,d',
         ],
-        'customer_support'=>[
-            'admin' => 'r',
-            'posts'=>"r",
-            'languages'=>"r",
-        ],
         'editor' => [
             'admin' => 'r',
             'menu-links' => 'c,r,u,d',
@@ -206,8 +201,6 @@ return [
             'posts' => 'c,r,u,d',
         ],
         'user' => [
-            'posts'=>"r",
-            'languages'=>"r",
         ],
     ],
 
