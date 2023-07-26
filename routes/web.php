@@ -59,7 +59,7 @@ Route::group(['prefix' => 'filemanager', 'middleware' => ['web', 'auth', 'can:ad
     Lfm::routes();
 });
 
-Route::prefix('admin')->middleware(['auth:sanctum', config('jetstream.auth_session'), 'can:admin-read', 'active.account'])->name('admin.')->group(function () {
+Route::prefix('admindashboard')->middleware(['auth:sanctum', config('jetstream.auth_session'), 'can:admin-read', 'active.account'])->name('admin.')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::middleware('auth')->group(function () {
         Route::resource('languages', LanguageController::class);

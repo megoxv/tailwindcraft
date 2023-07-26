@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -36,8 +37,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        $categories = Category::orderBy('id', 'DESC')->get();
-        return view('admin.posts.create', compact('categories'));
+        // $categories = Category::orderBy('id', 'DESC')->get();
+        // return view('admin.posts.create', compact('categories'));
     }
 
     /**
@@ -48,30 +49,30 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => "required|max:190",
-            'slug' => "required|max:190|unique:posts,slug",
-            'description' => "required",
-            'code' => "required",
-            'category_id' => "required|exists:categories,id",
-            'status' => "required",
-            'theme' => "required",
-        ]);
+        // $request->validate([
+        //     'name' => "required|max:190",
+        //     'slug' => "required|max:190|unique:posts,slug",
+        //     'description' => "required",
+        //     'code' => "required",
+        //     'category_id' => "required|exists:categories,id",
+        //     'status' => "required",
+        //     'theme' => "required",
+        // ]);
 
-        Post::create([
-            'user_id' => auth()->user()->id,
-            "name" => $request->name,
-            "slug" => Str::slug($request->slug),
-            "description" => $request->description,
-            "code" => $request->code,
-            "category_id" => $request->category_id,
-            "status" => $request->status,
-            "theme" => $request->theme,
-        ]);
+        // Post::create([
+        //     'user_id' => auth()->user()->id,
+        //     "name" => $request->name,
+        //     "slug" => Str::slug($request->slug),
+        //     "description" => $request->description,
+        //     "code" => $request->code,
+        //     "category_id" => $request->category_id,
+        //     "status" => $request->status,
+        //     "theme" => $request->theme,
+        // ]);
 
 
-        toast()->success(__('main.created_successfully'))->push();
-        return redirect()->route('admin.posts.index');
+        // toast()->success(__('main.created_successfully'))->push();
+        // return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -110,22 +111,21 @@ class PostController extends Controller
             'name' => "required|max:190",
             'slug' => "required|max:190|unique:posts,slug," . $post->id,
             'description' => "required",
-            'code' => "required",
             'category_id' => "required|exists:categories,id",
             'status' => "required",
             'theme' => "required",
-
         ]);
 
         $post->update([
             "name" => $request->name,
             "slug" => Str::slug($request->slug),
             "description" => $request->description,
-            "code" => $request->code,
             "category_id" => $request->category_id,
             "status" => $request->status,
             "theme" => $request->theme,
         ]);
+
+        Artisan::call('sitemap:generate');
 
         toast()->success(__('main.updated_successfully'))->push();
         return redirect()->route('admin.posts.index');
