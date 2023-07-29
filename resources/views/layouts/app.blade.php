@@ -26,23 +26,21 @@
         @stack('styles')
         {!! getSetting('header_code') !!}
     </head>
-    <body class="font-sans antialiased">
+    <body class="bg-dark font-sans antialiased">
         <livewire:toasts />
-        <div class="bg-dark">
-            {{-- Navbar --}}
-            @include('front.layouts.navbar')
-            {{-- End Navbar --}}
-    
-            {{-- Main Content --}}
-            <main>
-                @yield('content')
-            </main>
-            {{-- End Main Content --}}
-        
-            {{-- Footer --}}
-            @include('front.layouts.footer')
-            {{-- End Footer --}}
-        </div>
+        {{-- Navbar --}}
+        @include('front.layouts.navbar')
+        {{-- End Navbar --}}
+
+        {{-- Main Content --}}
+        <main>
+            @yield('content')
+        </main>
+        {{-- End Main Content --}}
+
+        {{-- Footer --}}
+        @include('front.layouts.footer')
+        {{-- End Footer --}}
         {{-- Scripts --}}
         @include('front.layouts.scripts')
     </body>
