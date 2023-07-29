@@ -16,7 +16,8 @@ class Post extends Component
 
     public function toggleLove()
     {
-        if (auth()->user()) {
+        if (!auth()->user()){
+    return;}
             $loveButton = PostsLove::where('post_id', $this->post->id)
                 ->where('user_id', auth()->user()->id)
                 ->first();
@@ -32,7 +33,7 @@ class Post extends Component
             }
 
             $this->post->load('loves');
-        }
+
     }
 
     public function render()

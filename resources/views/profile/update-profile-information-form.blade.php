@@ -34,7 +34,7 @@
                         {{ __('main.select_a_new_photo') }}
                     </x-jet-secondary-button>
 
-                    @if ($this->user->profile_photo_path)
+                    @if ($this->user->profile_photo)
                         <x-jet-secondary-button type="button" class="mt-2" wire:click="deleteProfilePhoto">
                             {{ __('main.remove_photo') }}
                         </x-jet-secondary-button>
@@ -79,7 +79,7 @@
 
             {{-- Github --}}
             <div>
-                <x-jet-label for="github" value="{{ __('main.github') }}" />
+                <x-jet-label for="github" value="{{ __('main.github') }} (Username Only)" />
                 <x-jet-input id="github" type="text" class="" wire:model.defer="state.github" />
                 <x-jet-input-error for="github" class="mt-2" />
             </div>

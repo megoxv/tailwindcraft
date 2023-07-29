@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-use App;
+use Illuminate\Support\Facades\App;
 use App\Models\AdsManager;
 use App\Models\AdsTracking;
 use Carbon\Carbon;

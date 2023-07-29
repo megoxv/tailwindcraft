@@ -17,7 +17,10 @@ class UsersSeeder extends Seeder
     {
         $existingUser = User::where('username', 'admin')->first();
 
-        if (!$existingUser) {
+        if ($existingUser){
+
+        User::factory()->count(100)->create();
+    return;} 
             $user = User::create([
                 'name' => "Admin",
                 'username' => "admin",
@@ -27,7 +30,7 @@ class UsersSeeder extends Seeder
             ]);
 
             $user->syncRoles(1);
-        }
+        
 
         User::factory()->count(100)->create();
     }

@@ -4,7 +4,13 @@
             {{-- Head --}}
             <div>
                 <input type="text" wire:model="name" class="block text-white text-2xl md:text-3xl font-bold md:w-[600px] mb-1 bg-transparent border-none focus:ring-transparent" placeholder="Write Name" maxlength="60" required>
+                @error('name')
+                    <p class="text-sm text-red-600 p-2">{{ $message }}</p>
+                @enderror
                 <textarea wire:model="description" class="block text-white text-sm font-normal h-[78px] md:w-[600px] bg-transparent border-none focus:ring-transparent resize-none" placeholder="Write Description" maxlength="160" required></textarea>
+                @error('description')
+                    <p class="text-sm text-red-600 p-2">{{ $message }}</p>
+                @enderror
             </div>
             {{-- End Head --}}
             <div class="container mx-auto pt-6 pb-[100px]">
@@ -33,12 +39,12 @@
                 </div>
                 {{-- End Preview Code / Editor --}}
                 <div class="flex justify-center md:justify-end pt-1 md:pt-2 pb-4 md:pb-12">
-                    <button class="px-4 md:px-8 py-2 md:py-4 rounded-md font-medium text-base flex items-center justify-center hover:bg-primary-25 bg-gray-25 border border-gray-700 text-white hover:text-primary-500 transition-colors duration-200 mr-4"  @click="draftModal = true">Draft</button>
+                    {{-- <button class="px-4 md:px-8 py-2 md:py-4 rounded-md font-medium text-base flex items-center justify-center hover:bg-primary-25 bg-gray-25 border border-gray-700 text-white hover:text-primary-500 transition-colors duration-200 mr-4"  @click="draftModal = true">Draft</button> --}}
                     <button class="px-4 md:px-8 py-2 md:py-4 rounded-md font-medium text-base flex items-center justify-center bg-primary-500 text-white hover:bg-primary-600 transition-colors duration-200" @click="submitModal = true">Submit for review</button>
                 </div>
             </div>
         </div>
-    
+
         @php
             $categories = App\Models\Category::get();
         @endphp
@@ -54,10 +60,10 @@
                             </svg>
                         </button>
                     </div>
-    
+
                     <div class="p-4 sm:p-10 text-center overflow-y-auto space-y-8">
                         {{-- Category --}}
-                        <div class="relative w-full bg-gray-25 group rounded-md">
+                        <div class="relative w-full bg-dark group rounded-md">
                             <select id="category" class="block p-4 rounded-md w-full text-base font-normal text-white bg-gray-25 outline outline-1 outline-gray-700 appearance-none focus:outline-primary-500 border-none focus:ring-transparent peer" placeholder=" " wire:model="category">
                                 <option value="" selected>Select Category</option>
                                 @foreach ($categories as $category )
@@ -65,6 +71,9 @@
                                 @endforeach
                             </select>
                             <label for="category" class="ltr:ml-[14px] rtl:mr-[14px] z-[1] flex items-center px-1 rounded-[3px] peer-focus:font-medium absolute bg-dark text-base font-normal text-gray-400 duration-300 transform -translate-y-[20px] scale-75 top-3 peer-focus:z-10 origin-[0] peer peer-disabled:bg-green-500 ltr:peer-focus:left-0 rtl:peer-focus:right-0 peer-focus:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-[4.5px] peer-focus:scale-75 peer-focus:-translate-y-[20px]">Category</label>
+                            @error('category')
+                                <p class="text-start text-sm text-red-600 mt-2">{{ $message }}</p>
+                            @enderror
                         </div>
                         {{-- End Category --}}
                         {{-- Theme --}}
@@ -76,6 +85,9 @@
                                 <option value="Light">Light</option>
                             </select>
                             <label for="theme" class="ltr:ml-[14px] rtl:mr-[14px] z-[1] flex items-center px-1 rounded-[3px] peer-focus:font-medium absolute bg-dark text-base font-normal text-gray-400 duration-300 transform -translate-y-[20px] scale-75 top-3 peer-focus:z-10 origin-[0] peer peer-disabled:bg-green-500 ltr:peer-focus:left-0 rtl:peer-focus:right-0 peer-focus:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-[4.5px] peer-focus:scale-75 peer-focus:-translate-y-[20px]">Theme</label>
+                            @error('theme')
+                                <p class="text-start text-sm text-red-600 mt-2">{{ $message }}</p>
+                            @enderror
                         </div>
                         {{-- End Theme --}}
                         <button type="submit" wire:click="submitForReview" class="w-full px-4 md:px-8 py-2 md:py-4 rounded-md font-medium text-base flex items-center justify-center bg-primary-500 text-white hover:bg-primary-600 transition-colors duration-200">Submit for review</button>
@@ -84,9 +96,9 @@
             </div>
         </div>
         {{-- End Modal Submit for review --}}
-        
+
         {{-- End Modal Save as a draft --}}
-        <div x-show="draftModal" x-cloak x-transition class="fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-50">
+        {{-- <div x-show="draftModal" x-cloak x-transition class="fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-50">
             <div class="ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto" @click.away="draftModal = false" x-transition:enter="motion-safe:ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
                 <div class="relative flex flex-col bg-dark shadow-lg rounded-xl">
                     <div class="absolute top-2 right-2">
@@ -97,10 +109,10 @@
                             </svg>
                         </button>
                     </div>
-    
+
                     <div class="p-4 sm:p-10 text-center overflow-y-auto space-y-8">
-                        {{-- Category --}}
-                        <div class="relative w-full bg-gray-25 group rounded-md">
+                        <!-- Category -->
+                        <div class="relative w-full bg-dark group rounded-md">
                             <select id="category" class="block p-4 rounded-md w-full text-base font-normal text-white bg-gray-25 outline outline-1 outline-gray-700 appearance-none focus:outline-primary-500 border-none focus:ring-transparent peer" placeholder=" " wire:model="category">
                                 <option selected>Select Category</option>
                                 @foreach ($categories as $category )
@@ -108,9 +120,12 @@
                                 @endforeach
                             </select>
                             <label for="category" class="ltr:ml-[14px] rtl:mr-[14px] z-[1] flex items-center px-1 rounded-[3px] peer-focus:font-medium absolute bg-dark text-base font-normal text-gray-400 duration-300 transform -translate-y-[20px] scale-75 top-3 peer-focus:z-10 origin-[0] peer peer-disabled:bg-green-500 ltr:peer-focus:left-0 rtl:peer-focus:right-0 peer-focus:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-[4.5px] peer-focus:scale-75 peer-focus:-translate-y-[20px]">Category</label>
+                            @error('category')
+                                <p class="text-start text-sm text-red-600 mt-2">{{ $message }}</p>
+                            @enderror
                         </div>
-                        {{-- End Category --}}
-                        {{-- Theme --}}
+                        <!-- End Category -->
+                        <!-- Theme -->
                         <div class="relative w-full bg-dark group rounded-md">
                             <select id="theme" class="block p-4 rounded-md w-full text-base font-normal text-white bg-gray-25 outline outline-1 outline-gray-700 appearance-none focus:outline-primary-500 border-none focus:ring-transparent peer" placeholder=" " wire:model="theme">
                                 <option selected>Select Theme</option>
@@ -119,13 +134,16 @@
                                 <option value="Light">Light</option>
                             </select>
                             <label for="theme" class="ltr:ml-[14px] rtl:mr-[14px] z-[1] flex items-center px-1 rounded-[3px] peer-focus:font-medium absolute bg-dark text-base font-normal text-gray-400 duration-300 transform -translate-y-[20px] scale-75 top-3 peer-focus:z-10 origin-[0] peer peer-disabled:bg-green-500 ltr:peer-focus:left-0 rtl:peer-focus:right-0 peer-focus:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-[4.5px] peer-focus:scale-75 peer-focus:-translate-y-[20px]">Theme</label>
+                            @error('theme')
+                                <p class="text-start text-sm text-red-600 mt-2">{{ $message }}</p>
+                            @enderror
                         </div>
-                        {{-- End Theme --}}
+                        <!-- End Theme -->
                         <button type="submit" wire:click="saveAsDraft" class="w-full px-4 md:px-8 py-2 md:py-4 rounded-md font-medium text-base flex items-center justify-center bg-primary-500 text-white hover:bg-primary-600 transition-colors duration-200">Save as a draft</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         {{-- End Modal Save as a draft --}}
     </div>
 </section>

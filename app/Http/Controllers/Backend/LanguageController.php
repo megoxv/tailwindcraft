@@ -47,14 +47,18 @@ class LanguageController extends Controller
 
         $success = false;
         $Language = Language::where("code", $code)->first();
-        if (empty($Language)) {
+        if (!empty($Language)) {
+            return redirect()->back();
+        }
             // Generate Lang files
             if ($code == "en") {
                 $success = true;
             } else {
                 $success = \File::copyDirectory(base_path("lang/en"), base_path("lang/$code"));
             }
-            if ($success) {
+            if (!$success) {
+                return redirect()->back();
+            }
                 $Language = new Language;
                 $Language->name = $request->name;
                 $Language->code = $code;
@@ -66,12 +70,8 @@ class LanguageController extends Controller
                 
                 toast()->success(__('main.created_successfully'))->push();
                 return redirect()->route('admin.languages.index');
-            } else {
-                return redirect()->back();
-            }
-        } else {
-            return redirect()->back();
-        }
+            
+        
     }
 
 

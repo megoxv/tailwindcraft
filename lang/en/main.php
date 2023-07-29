@@ -326,9 +326,12 @@ return [
     'post' => 'Post',
     'total_posts' => 'Total Posts',
     'wait' => 'Wait',
-    'theme' => 'theme',
+    'theme' => 'Theme',
     'successfully' => 'Successfully',
     'cleared_cache' => 'Cleared Cache',
     'clear_cache' => 'Clear Cache',
     'sitemap_generate' => 'Sitemap Generate',
+    'rejecte' => 'Rejecte',
+    'website' => 'Website',
+    'confirm_password' => 'Confirm Password',
 ];
