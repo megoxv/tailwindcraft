@@ -1,10 +1,8 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('layouts.app')
 
-        <div class="mb-4 text-sm text-gray-600">
+@section('content')
+    <x-jet-authentication-card>
+        <div class="mb-4 text-sm text-gray-400">
             {{ __('main.before_continuing,_could_you_verify_your_email_address_by_clicking_on_the_link_we_just_emailed_to_you?_if_you_didn\'t_receive_the_email,_we_will_gladly_send_you_another') }}
         </div>
 
@@ -26,20 +24,17 @@
             </form>
 
             <div>
-                <a
-                    href="{{ route('user.profile') }}"
-                    class="underline text-sm text-gray-600 hover:text-gray-900"
-                >
+                <a href="{{ route('user.profile') }}" class="underline text-sm text-gray-300 hover:text-primary-600">
                     {{ __('main.edit_profile') }}</a>
 
                 <form method="POST" action="{{ route('logout') }}" class="inline">
                     @csrf
 
-                    <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900 ml-2">
+                    <button type="submit" class="underline text-sm text-gray-300 hover:text-primary-600 ml-2">
                         {{ __('main.logout') }}
                     </button>
                 </form>
             </div>
         </div>
     </x-jet-authentication-card>
-</x-guest-layout>
+@endsection

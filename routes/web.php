@@ -59,7 +59,7 @@ Route::group(['prefix' => 'filemanager', 'middleware' => ['web', 'auth', 'can:ad
     Lfm::routes();
 });
 
-Route::prefix('admindashboard')->middleware(['auth:sanctum', config('jetstream.auth_session'), 'can:admin-read', 'active.account'])->name('admin.')->group(function () {
+Route::prefix('admindashboard')->middleware(['auth:sanctum', config('jetstream.auth_session'), 'can:admin-read', 'verified', 'active.account'])->name('admin.')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::middleware('auth')->group(function () {
         Route::resource('languages', LanguageController::class);
@@ -95,8 +95,8 @@ Route::prefix('user')->middleware(['auth:sanctum', config('jetstream.auth_sessio
     Route::get('/security', [FrontUserController::class, 'security'])->name('security');
 });
 
-Route::get('/create', Create::class)->name('create.show')->middleware(['auth', 'active.account']);
-Route::get('/edit/{slug}', Edit::class)->name('edit.show')->middleware(['auth', 'active.account']);
+Route::get('/create', Create::class)->name('create.show')->middleware(['auth', 'verified', 'active.account']);
+Route::get('/edit/{slug}', Edit::class)->name('edit.show')->middleware(['auth', 'verified', 'active.account']);
 
 Route::get('/profile/{username}', Profile::class)->name('profile.show');
 

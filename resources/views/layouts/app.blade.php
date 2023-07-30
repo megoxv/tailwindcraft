@@ -9,6 +9,7 @@
         <link rel="apple-touch-icon" href="{{ getSetting('light_logo') }}">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="google-site-verification" content="XsRtxPAX4lgZKFEo787XLropFk9una4oaPURl9ZcY-o" />
         <!-- Scripts -->
         @toastScripts
         @vite(['resources/css/app.css', 'resources/js/app.js'])
