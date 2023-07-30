@@ -40,6 +40,11 @@ class Edit extends Component
     public function mount($slug)
     {
         $this->post = Post::where('slug', $slug)->firstOrFail();
+
+        if ($this->post->user_id !==  auth()->user()->id) {
+            abort(404);
+        }
+
         $this->name = $this->post->name;
         $this->description = $this->post->description;
         $this->category = $this->post->category_id;

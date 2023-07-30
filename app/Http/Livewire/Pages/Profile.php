@@ -28,6 +28,11 @@ class Profile extends Component
     public function deletePost($postId)
     {
         $post = Post::findOrFail($postId);
+    
+        if($post->user_id !==  auth()->user()->id) {
+            abort(404);
+        }
+
         $post->delete();
 
         toast()->success('Post deleted successfully')->push();
@@ -37,8 +42,8 @@ class Profile extends Component
     {
         $user = User::where('username', $this->username)->first();
 
-        $posts = $user->posts()->where('status', 'Active')->latest()->paginate($this->perPage); 
-        $profilePosts = $user->posts()->latest()->paginate($this->perPage); 
+        $posts = $user->posts()->where('status', 'Active')->latest()->paginate($this->perPage);
+        $profilePosts = $user->posts()->latest()->paginate($this->perPage);
 
         return view('livewire.pages.profile', compact('user', 'posts', 'profilePosts'))->extends('layouts.app')->section('content');
     }

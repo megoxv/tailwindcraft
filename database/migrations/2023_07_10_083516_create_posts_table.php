@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->text('name')->nullable();
             $table->string('slug')->unique();
-            $table->longText('description')->nullable();
+            $table->string('description')->nullable();
             $table->longText('code')->nullable();
             $table->integer('views')->default('0');
             $table->enum('status', ['Draft', 'Wait', 'Active', 'Rejecte']);

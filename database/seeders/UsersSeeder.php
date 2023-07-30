@@ -15,23 +15,25 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        $existingUser = User::where('username', 'admin')->first();
+        // $existingUser = User::where('username', 'admin')->first();
 
-        if ($existingUser){
+        // if ($existingUser) {
 
-        User::factory()->count(100)->create();
-    return;} 
-            $user = User::create([
-                'name' => "Admin",
-                'username' => "admin",
-                'email' => 'admin@admin.com',
-                'email_verified_at' => now(),
-                'password' => bcrypt('password')
-            ]);
+        //     User::factory()->count(100)->create();
+        //     return;
+        // }
 
-            $user->syncRoles(1);
-        
+        $user = User::create([
+            'name' => "Admin",
+            'username' => "admin",
+            'email' => 'admin@admin.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('password')
+        ]);
 
-        User::factory()->count(100)->create();
+        $user->syncRoles(1);
+
+
+        // User::factory()->count(100)->create();
     }
 }

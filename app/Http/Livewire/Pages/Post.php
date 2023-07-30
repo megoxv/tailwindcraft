@@ -7,6 +7,7 @@ use App\Models\Post as PostModel;
 use App\Models\PostView;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Livewire\Component;
 use Illuminate\Http\Request;
 
@@ -35,24 +36,25 @@ class Post extends Component
 
     public function toggleLove()
     {
-        if (!auth()->user()){
-    return;} 
-            $loveButton = PostsLove::where('post_id', $this->post->id)
-                ->where('user_id', auth()->user()->id)
-                ->first();
+        if (!auth()->user()) {
+            return;
+        }
 
-            if (!$loveButton) {
-                PostsLove::create([
-                    'post_id' => $this->post->id,
-                    'user_id' => auth()->user()->id,
-                    'love' => true
-                ]);
-            } else {
-                $loveButton->delete();
-            }
+        $loveButton = PostsLove::where('post_id', $this->post->id)
+            ->where('user_id', auth()->user()->id)
+            ->first();
 
-            $this->post->load('loves');
-        
+        if (!$loveButton) {
+            PostsLove::create([
+                'post_id' => $this->post->id,
+                'user_id' => auth()->user()->id,
+                'love' => true
+            ]);
+        } else {
+            $loveButton->delete();
+        }
+
+        $this->post->load('loves');
     }
 
     public function codeUpdated($payload)
@@ -73,15 +75,10 @@ class Post extends Component
             abort(404);
         }
 
-        // Set the meta tags for the article
-        SEOMeta::setTitle($post->name)
-            ->setDescription($post->description)
-            ->setCanonical(route('post.show', ['username' => $this->username, 'slug' => $this->slug]));
-
-        // Set the OpenGraph tags for the post
-        OpenGraph::setTitle($post->name)
-            ->setDescription($post->description)
-            ->setUrl(route('post.show', ['username' => $this->username, 'slug' => $this->slug]));
+        // Set the meta tags
+        SEOTools::setTitle($post->name);
+        SEOTools::setDescription($post->description);
+        SEOTools::opengraph()->setUrl(route('post.show', ['username' => $this->username, 'slug' => $this->slug]));
 
         // Check if the current IP address already has a view record for this post
         $existingView = PostView::where('post_id', $post->id)

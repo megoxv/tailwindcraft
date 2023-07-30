@@ -34,13 +34,13 @@ class AdReportComponent extends Component
         return view('livewire.ad-report-component');
     }
 
-    public function calculateClicksReport(){
+    public function calculateClicksReport()
+    {
         $date_from = Carbon::parse($this->reportStartDate)->startOfDay();
         $date_to = Carbon::parse($this->reportEndDate)->endOfDay();
-        $adTracking = AdsTracking::
-                        where('created_at', '>=', $date_from)
-                        ->where('created_at', '<', $date_to)
-                        ->get();
+        $adTracking = AdsTracking::where('created_at', '>=', $date_from)
+            ->where('created_at', '<', $date_to)
+            ->get();
 
         //Calculate clicks per date
         $dateClicksCollection = $adTracking->mapWithKeys(function ($item, $key) {
@@ -48,23 +48,23 @@ class AdReportComponent extends Component
         });
         $period = CarbonPeriod::create($this->reportStartDate, $this->reportEndDate);
         $result = collect();
-        foreach($period as $p){
-            if($dateClicksCollection->has($p->format('Y-m-d'))){
+        foreach ($period as $p) {
+            if ($dateClicksCollection->has($p->format('Y-m-d'))) {
                 $result[$p->format('Y-m-d')] = $dateClicksCollection->get($p->format('Y-m-d'));
-            }else{
+            } else {
                 $result[$p->format('Y-m-d')] = 0;
             }
         }
         $this->clicksPerDate = $result->toArray();
 
         //Calculate clicks per ad in the given period
-        $adClicksCollection = $adTracking->map(function($item, $key){
+        $adClicksCollection = $adTracking->map(function ($item, $key) {
             return json_decode($item['ad_clicks'], true);
         });
 
 
         $ads = AdsManager::all();
-        foreach($ads as $ad){
+        foreach ($ads as $ad) {
             array_push($this->clicksPerAd, ['name' => $ad->name,  'clicks' => $adClicksCollection->sum($ad->slug)]);
         }
 

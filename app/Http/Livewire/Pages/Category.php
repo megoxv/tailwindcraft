@@ -3,8 +3,7 @@
 namespace App\Http\Livewire\Pages;
 
 use App\Models\Category as ModelsCategory;
-use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -34,16 +33,11 @@ class Category extends Component
             abort(404);
         }
 
-        // Set the meta tags for the article
-        SEOMeta::setTitle($category->title)
-            ->setDescription($category->description)
-            ->setCanonical(route('category.show', $category->slug));
-
-        // Set the OpenGraph tags for the category
-        OpenGraph::setTitle($category->title)
-            ->setDescription($category->description)
-            ->setUrl(route('category.show', $category->slug))
-            ->addProperty('type', 'category');
+        // Set the meta tags
+        SEOTools::setTitle($category->title);
+        SEOTools::setDescription($category->description);
+        SEOTools::opengraph()->setUrl(route('category.show', $category->slug));
+        SEOTools::opengraph()->addProperty('type', 'category');
 
         $posts = $category->posts()->where('status', 'Active')->inRandomOrder()->paginate($this->perPage);
 

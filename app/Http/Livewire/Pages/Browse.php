@@ -18,12 +18,18 @@ class Browse extends Component
         $this->perPage += 12;
     }
 
-    public function render()
+    public function mount()
     {
+        SEOTools::setTitle(getSetting('seo_title'));
         SEOTools::setDescription(getSetting('seo_description'));
         SEOTools::opengraph()->setUrl(getSetting('website_url'));
         SEOTools::opengraph()->addProperty('type', 'website');
+        // SEOTools::twitter()->setSite('@TailwindCraft');
         SEOTools::jsonLd()->addImage(getSetting('image'));
+    }
+
+    public function render()
+    {
 
         $posts = Post::where('status', 'Active')->inRandomOrder()->paginate($this->perPage);
 
