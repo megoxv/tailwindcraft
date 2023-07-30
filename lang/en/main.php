@@ -334,4 +334,5 @@ return [
     'rejecte' => 'Rejecte',
     'website' => 'Website',
     'confirm_password' => 'Confirm Password',
+    'username' => 'Username',
 ];

@@ -31,12 +31,11 @@
                                     </button>
                                     @php
                                         $totalViews = 0;
-                                        foreach ($user->posts->where('status', 'Active') as $post) {
-                                            if (is_int($post->views)) {
-                                                $totalViews += $post->views;
-                                            } else {
-                                                $totalViews += $post->views->count();
-                                            }
+                                    
+                                        $posts = $user->posts()->select('status', 'views')->where('status', 'Active')->get();
+
+                                        foreach ($posts as $post) {
+                                            $totalViews += $post->views;
                                         }
                                     @endphp
                                     <small class="ml-2 font-medium text-white">{{ $totalViews }}</small>

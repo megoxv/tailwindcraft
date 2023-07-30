@@ -46,6 +46,7 @@ class UserController extends Controller
             'name' => "required|max:190",
             'bio' => "nullable|max:5000",
             'status' => "required|in:0,1",
+            'username' => "required|string|alpha_dash|max:60|unique:users,username",
             'email' => "required|unique:users,email",
             'password' => "required|min:8|max:190",
         ]);
@@ -54,6 +55,7 @@ class UserController extends Controller
             "name" => $request->name,
             "bio" => $request->bio,
             "status" => $request->status,
+            "username" => $request->username,
             "email" => $request->email,
             "password" => Hash::make($request->password),
         ]);
@@ -83,6 +85,7 @@ class UserController extends Controller
             'name' => "nullable|max:190",
             'bio' => "nullable|max:5000",
             'status' => "required|in:0,1",
+            'username' => "required|string|alpha_dash|max:60|unique:users,username," . $user->id,
             'email' => "required|unique:users,email," . $user->id,
             'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'new_password' => "nullable|min:8|max:190",
@@ -92,8 +95,8 @@ class UserController extends Controller
             "name" => $request->name,
             "bio" => $request->bio,
             "status" => $request->status,
+            "username" => $request->username,
             "email" => $request->email,
-
         ]);
 
         if (auth()->user()->can('user-roles-update')) {

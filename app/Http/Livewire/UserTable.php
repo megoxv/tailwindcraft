@@ -37,6 +37,9 @@ class UserTable extends DataTableComponent
             Column::make(__('main.name'), "name")
                 ->sortable()
                 ->searchable(),
+            Column::make(__('main.username'), "username")
+                ->sortable()
+                ->searchable(),
             Column::make(__('main.email'), "email")
                 ->sortable()
                 ->searchable(),

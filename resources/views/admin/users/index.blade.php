@@ -66,6 +66,18 @@
                                             @enderror
                                         </div>
                                         <div>
+                                            <label for="username" class="block text-sm mb-2 dark:text-white">{{ __('main.username') }}</label>
+                                            <div class="relative">
+                                                <input type="text" id="username" name="username"
+                                                    value="{{ old('username') }}"
+                                                    class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                                                    required>
+                                            </div>
+                                            @error('username')
+                                                <p class="hidden text-xs text-red-600 mt-2">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                        <div>
                                             <label for="email" class="block text-sm mb-2 dark:text-white">{{ __('main.email') }}</label>
                                             <div class="relative">
                                                 <input type="email" id="email" name="email"
@@ -180,6 +192,10 @@
                                         <p class="text-sm dark:text-white">{{ $user->name }}</p>
                                     </div>
                                     <div class="flex items-center gap-3">
+                                        <h4 class="font-medium text-gray-800 dark:text-gray-200">{{ __('main.username') }}: </h4>
+                                        <p class="text-sm dark:text-white">{{ $user->username }}</p>
+                                    </div>
+                                    <div class="flex items-center gap-3">
                                         <h4 class="font-medium text-gray-800 dark:text-gray-200">{{ __('main.email') }}: </h4>
                                         <p class="text-sm dark:text-white">{{ $user->email }}</p>
                                     </div>
@@ -282,6 +298,18 @@
                                                     required>
                                             </div>
                                             @error('name')
+                                                <p class="hidden text-xs text-red-600 mt-2">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                        <div>
+                                            <label for="username" class="block text-sm mb-2 dark:text-white">{{ __('main.username') }}</label>
+                                            <div class="relative">
+                                                <input type="text" id="username" name="username"
+                                                    value="{{ $user->username }}"
+                                                    class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                                                    required>
+                                            </div>
+                                            @error('username')
                                                 <p class="hidden text-xs text-red-600 mt-2">{{ $message }}</p>
                                             @enderror
                                         </div>
