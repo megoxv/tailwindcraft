@@ -110,6 +110,7 @@ return [
     'google_analytics_tracking_id' => 'Google Analytics Tracking ID',
     'seo_configuration' => 'SEO Configuration',
     'seo_title' => 'SEO Title',
+    'seo_author' => 'SEO Author',
     'seo_keywords' => 'SEO Keywords',
     'seo_description' => 'SEO Description',
     'social_title' => 'Social Title',
