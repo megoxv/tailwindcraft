@@ -11,6 +11,7 @@ class Category extends Component
 {
     use WithPagination;
 
+    public $search = '';
     public $perPage = 12;
 
     public function loadMore()
@@ -39,7 +40,16 @@ class Category extends Component
         SEOTools::opengraph()->setUrl(route('category.show', $category->slug));
         SEOTools::opengraph()->addProperty('type', 'category');
 
-        $posts = $category->posts()->where('status', 'Active')->inRandomOrder()->paginate($this->perPage);
+        $query = $category->posts()->where('status', 'Active');
+
+        if (!empty($this->search)) {
+            $query->where(function ($q) {
+                $q->where('name', 'like', '%' . $this->search . '%')
+                    ->orWhere('description', 'like', '%' . $this->search . '%');
+            });
+        }
+
+        $posts = $query->inRandomOrder()->paginate($this->perPage);
 
         return view('livewire.pages.category', compact('category', 'posts'))->extends('layouts.app')->section('content');
     }

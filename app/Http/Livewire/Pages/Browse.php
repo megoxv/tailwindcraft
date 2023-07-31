@@ -11,6 +11,7 @@ class Browse extends Component
 {
     use WithPagination;
 
+    public $search = '';
     public $perPage = 12;
 
     public function loadMore()
@@ -31,7 +32,16 @@ class Browse extends Component
     public function render()
     {
 
-        $posts = Post::where('status', 'Active')->inRandomOrder()->paginate($this->perPage);
+        $query = Post::where('status', 'Active');
+
+        if (!empty($this->search)) {
+            $query->where(function ($q) {
+                $q->where('name', 'like', '%' . $this->search . '%')
+                    ->orWhere('description', 'like', '%' . $this->search . '%');
+            });
+        }
+
+        $posts = $query->inRandomOrder()->paginate($this->perPage);
 
         return view('livewire.pages.browse', compact('posts'))->extends('layouts.app')->section('content');
     }

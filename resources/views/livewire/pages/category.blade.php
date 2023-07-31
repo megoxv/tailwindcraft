@@ -1,9 +1,15 @@
 <section class="container px-2 lg:px-8 transition-all duration-200 mx-auto py-5" x-data="{ sidebarOpen: false }">
     <div>
         {{-- Head --}}
-        <div>
-            <h1 class="text-white text-2xl md:text-3xl font-bold mb-1">{{ $category->name }}</h1>
-            <p class="font-normal text-gray-400 md:w-[600px]">{{ $category->description }}</p>
+        <div class="flex justify-between items-end content-end">
+            <div>
+                <h1 class="text-white text-2xl md:text-3xl font-bold mb-1">{{ $category->name }}</h1>
+                <p class="font-normal text-gray-400 md:w-[600px]">{{ $category->description }}</p>
+            </div>
+            <div class="relative group rounded-md hidden lg:block">
+                <input type="search" wire:model="search" id="search" class="block p-4 rounded-md w-full text-base font-normal text-white bg-gray-25 outline outline-1 outline-gray-700 appearance-none focus:outline-primary-500 border-none focus:ring-transparent peer" placeholder="Search...">
+                <label for="search" class="ltr:ml-[14px] rtl:mr-[14px] z-[1] flex items-center px-1 rounded-[3px] peer-focus:font-medium absolute bg-gray-25 text-base font-normal text-gray-400 duration-300 transform -translate-y-[20px] scale-75 top-3 peer-focus:z-10 origin-[0] peer peer-disabled:bg-green-500 ltr:peer-focus:left-0 rtl:peer-focus:right-0 peer-focus:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-[4.5px] peer-focus:scale-75 peer-focus:-translate-y-[20px]">Search</label>
+            </div>
         </div>
         {{-- End Head --}}
         <div class="container mx-auto pt-6 pb-[100px]">
@@ -35,6 +41,10 @@
                                     <option value="Light">Light</option>
                                 </select>
                             </div> --}}
+                            <div class="relative group rounded-md block lg:hidden">
+                                <input type="search" wire:model="search" id="search" class="block p-4 rounded-md w-full text-base font-normal text-white bg-gray-25 outline outline-1 outline-gray-700 appearance-none focus:outline-primary-500 border-none focus:ring-transparent peer" placeholder="Search...">
+                                <label for="search" class="ltr:ml-[14px] rtl:mr-[14px] z-[1] flex items-center px-1 rounded-[3px] peer-focus:font-medium absolute bg-gray-25 text-base font-normal text-gray-400 duration-300 transform -translate-y-[20px] scale-75 top-3 peer-focus:z-10 origin-[0] peer peer-disabled:bg-green-500 ltr:peer-focus:left-0 rtl:peer-focus:right-0 peer-focus:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-[4.5px] peer-focus:scale-75 peer-focus:-translate-y-[20px]">Search</label>
+                            </div>
                         </div>
                         {{-- Elements --}}
                         <div>
