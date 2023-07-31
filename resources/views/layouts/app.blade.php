@@ -6,7 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         {!! SEO::generate() !!}
         <link rel="shortcut icon" href="{{ getSetting('favicon') }}" type="image/x-icon">
-        <link rel="apple-touch-icon" href="{{ getSetting('light_logo') }}">
+        <link rel="apple-touch-icon" href="{{ getSetting('favicon') }}">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="google-site-verification" content="XsRtxPAX4lgZKFEo787XLropFk9una4oaPURl9ZcY-o" />

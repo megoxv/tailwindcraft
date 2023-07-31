@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ __('main.dashboard') }}</title>
     <link rel="shortcut icon" href="{{ getSetting('favicon') }}" type="image/x-icon">
-    <link rel="apple-touch-icon" href="{{ getSetting('light_logo') }}">
+    <link rel="apple-touch-icon" href="{{ getSetting('favicon') }}">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     {{-- Font --}}
