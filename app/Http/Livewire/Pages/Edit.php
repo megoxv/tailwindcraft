@@ -41,7 +41,7 @@ class Edit extends Component
     {
         $this->post = Post::where('slug', $slug)->firstOrFail();
 
-        if ($this->post->user_id !==  auth()->user()->id) {
+        if ($this->post->user_id !=  auth()->user()->id) {
             abort(404);
         }
 

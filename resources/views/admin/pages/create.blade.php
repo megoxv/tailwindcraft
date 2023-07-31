@@ -32,7 +32,7 @@
                             <label for="content" class="block text-sm font-medium mb-2 dark:text-white">{{ __('main.content') }}</label>
                             <span class="block text-sm text-gray-500 mb-2">{{ __('main.required') }}</span>
                         </div>
-                        <textarea name="content" id="editor">{{ old('content') }}</textarea>
+                        <textarea name="content" id="texteditor">{{ old('content') }}</textarea>
                         @error('slug')
                             <p class="hidden text-xs text-red-600 mt-2">{{ $message }}</p>
                         @enderror

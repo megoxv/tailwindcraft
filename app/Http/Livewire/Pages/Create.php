@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Pages;
 
 use App\Models\Post;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Livewire\Component;
 use Usernotnull\Toast\Concerns\WireToast;
 use Illuminate\Support\Str;
@@ -120,6 +121,11 @@ class Create extends Component
 
     public function render()
     {
+        SEOTools::setTitle('Create');
+        SEOTools::setDescription('Unleash your creativity with our top-notch UI components designed for seamless web development.');
+        SEOTools::opengraph()->setUrl(route('create.show'));
+        SEOTools::opengraph()->addProperty('type', 'page');
+
         return view('livewire.pages.create')->extends('layouts.app')->section('content');
     }
 }

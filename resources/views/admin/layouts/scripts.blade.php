@@ -7,7 +7,7 @@
 <script>
     tinymce.init({
         path_absolute: "/",
-        selector: 'textarea#editor',
+        selector: 'textarea#texteditor',
         height: 500,
         plugins: [
             'advlist', 'autolink', 'autosave', 'lists', 'link', 'image', 'charmap', 'preview',

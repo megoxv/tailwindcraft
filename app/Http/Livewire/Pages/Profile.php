@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Pages;
 
 use App\Models\Post;
 use App\Models\User;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Usernotnull\Toast\Concerns\WireToast;
@@ -29,7 +30,7 @@ class Profile extends Component
     {
         $post = Post::findOrFail($postId);
     
-        if($post->user_id !==  auth()->user()->id) {
+        if ($post->user_id !=  auth()->user()->id) {
             abort(404);
         }
 
@@ -41,6 +42,15 @@ class Profile extends Component
     public function render()
     {
         $user = User::where('username', $this->username)->first();
+
+        if (!$user) {
+            abort(404);
+        }
+
+            // Set the meta tags
+            SEOTools::setTitle($user->name);
+            SEOTools::setDescription($user->bio);
+            SEOTools::opengraph()->setUrl(route('profile.show', $user->username));
 
         $posts = $user->posts()->where('status', 'Active')->latest()->paginate($this->perPage);
         $profilePosts = $user->posts()->latest()->paginate($this->perPage);

@@ -1,5 +1,12 @@
 @extends('layouts.app')
 
+@php
+    // Set the meta tags
+    Artesaos\SEOTools\Facades\SEOTools::setTitle('Forgot password');
+    Artesaos\SEOTools\Facades\SEOTools::setDescription('Recover access to your account effortlessly through our Forgot Password.');
+    Artesaos\SEOTools\Facades\SEOTools::opengraph()->setUrl(route('password.request'));
+@endphp
+
 @section('content')
     <div class="container relative m-auto px-6 md:px-12 xl:px-40 py-32">
         <div class="max-w-[585px] w-full mx-auto p-7 bg-gray-25 rounded-[10px] outline outline-1 outline-gray-800">

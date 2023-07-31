@@ -1,5 +1,12 @@
 @extends('layouts.app')
 
+@php
+    // Set the meta tags
+    Artesaos\SEOTools\Facades\SEOTools::setTitle('Register');
+    Artesaos\SEOTools\Facades\SEOTools::setDescription('Join our community and create an account on our user-friendly Register.');
+    Artesaos\SEOTools\Facades\SEOTools::opengraph()->setUrl(route('register'));
+@endphp
+
 @section('content')
     <div class="container relative m-auto px-6 md:px-12 xl:px-40 py-[100px]">
         <div class="max-w-[585px] w-full mx-auto p-7 bg-gray-25 rounded-[10px] outline outline-1 outline-gray-800">

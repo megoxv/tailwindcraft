@@ -30,6 +30,10 @@ class Post extends Component
             ->where('status', 'Active')
             ->first();
 
+        if (!$post) {
+            abort(404);
+        }
+
         $this->code = $post->code;
         $this->post = $post;
     }
@@ -70,10 +74,6 @@ class Post extends Component
     public function render(Request $request)
     {
         $post = PostModel::where('slug', $this->slug)->where('status', 'Active')->first();
-
-        if (!$post) {
-            abort(404);
-        }
 
         // Set the meta tags
         SEOTools::setTitle($post->name);
