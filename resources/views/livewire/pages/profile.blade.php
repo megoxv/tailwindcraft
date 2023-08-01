@@ -173,7 +173,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <iframe class="{{ $post->theme === 'Dark' ? 'bg-gray-25' :  'bg-[#E8E8E8]'}} w-full h-56 object-cover rounded-lg mb-4 flex items-end justify-center" title="{{ $post->name }}" loading="lazy" sandbox="allow-scripts" srcdoc="<head><script src='{{ asset('plugins/tailwindcss/tailwindcss.js') }}'></script><script> tailwind.config = { darkMode: 'class', } </script></head><body class='{{ $post->theme === 'Dark' ? 'dark' : 'light' }} h-screen flex items-center justify-center'><main>{{ $post->code }}</main></body>"></iframe>
+                                            <iframe class="{{ $post->theme === 'Dark' ? 'bg-gray-25' :  'bg-[#E8E8E8]'}} w-full h-56 object-cover rounded-lg mb-4 flex items-end justify-center" title="{{ $post->name }}" loading="lazy" sandbox="allow-scripts" srcdoc="<head><script src='https://cdn.tailwindcss.com'></script><script> tailwind.config = { darkMode: 'class', } </script></head><body class='{{ $post->theme === 'Dark' ? 'dark' : 'light' }} h-screen flex items-center justify-center'><main>{{ $post->code }}</main></body>"></iframe>
                                             <div class="flex items-center justify-between">
                                                 <a href="{{ route('profile.show', $post->user->username) }}" class="my-2 sm:my-0 font-normal text-white mr-2">{{ $post->user->name }}</a>
                                                 <p class="text-white text-sm py-2 flex items-center gap-3">
