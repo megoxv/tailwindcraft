@@ -16,7 +16,7 @@ class FrontController extends Controller
             abort(404);
         }
 
-        // Set the meta tags for the article
+        // Set the meta for the article
         SEOMeta::setTitle($page->meta_title)
             ->setDescription($page->meta_description)
             ->setCanonical(route('page.show', $slug));

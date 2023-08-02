@@ -75,7 +75,7 @@ class Post extends Component
     {
         $post = PostModel::where('slug', $this->slug)->where('status', 'Active')->first();
 
-        // Set the meta tags
+        // Set the meta
         SEOTools::setTitle($post->name);
         SEOTools::setDescription($post->description);
         SEOTools::opengraph()->setUrl(route('post.show', ['username' => $this->username, 'slug' => $this->slug]));

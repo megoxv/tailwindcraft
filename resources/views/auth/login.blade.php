@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @php
-    // Set the meta tags
+    // Set the meta
     Artesaos\SEOTools\Facades\SEOTools::setTitle('Login');
     Artesaos\SEOTools\Facades\SEOTools::setDescription('Access your account with ease on our secure Login.');
     Artesaos\SEOTools\Facades\SEOTools::opengraph()->setUrl(route('login'));

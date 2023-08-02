@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @php
-    // Set the meta tags
+    // Set the meta
     Artesaos\SEOTools\Facades\SEOTools::setTitle('Register');
     Artesaos\SEOTools\Facades\SEOTools::setDescription('Join our community and create an account on our user-friendly Register.');
     Artesaos\SEOTools\Facades\SEOTools::opengraph()->setUrl(route('register'));

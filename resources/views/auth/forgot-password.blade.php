@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @php
-    // Set the meta tags
+    // Set the meta
     Artesaos\SEOTools\Facades\SEOTools::setTitle('Forgot password');
     Artesaos\SEOTools\Facades\SEOTools::setDescription('Recover access to your account effortlessly through our Forgot Password.');
     Artesaos\SEOTools\Facades\SEOTools::opengraph()->setUrl(route('password.request'));

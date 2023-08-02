@@ -34,7 +34,7 @@ class Category extends Component
             abort(404);
         }
 
-        // Set the meta tags
+        // Set the meta
         SEOTools::setTitle($category->title);
         SEOTools::setDescription($category->description);
         SEOTools::opengraph()->setUrl(route('category.show', $category->slug));

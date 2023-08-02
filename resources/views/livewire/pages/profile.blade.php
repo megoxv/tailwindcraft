@@ -31,8 +31,6 @@
                                     </button>
                                     @php
                                         $totalViews = 0;
-                                    
-                                        $posts = $user->posts()->select('status', 'views')->where('status', 'Active')->get();
 
                                         foreach ($posts as $post) {
                                             $totalViews += $post->views;

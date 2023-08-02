@@ -29,7 +29,7 @@ class Profile extends Component
     public function deletePost($postId)
     {
         $post = Post::findOrFail($postId);
-    
+
         if ($post->user_id !=  auth()->user()->id) {
             abort(404);
         }
@@ -47,10 +47,10 @@ class Profile extends Component
             abort(404);
         }
 
-            // Set the meta tags
-            SEOTools::setTitle($user->name);
-            SEOTools::setDescription($user->bio);
-            SEOTools::opengraph()->setUrl(route('profile.show', $user->username));
+        // Set the meta
+        SEOTools::setTitle($user->name);
+        SEOTools::setDescription($user->bio);
+        SEOTools::opengraph()->setUrl(route('profile.show', $user->username));
 
         $posts = $user->posts()->where('status', 'Active')->latest()->paginate($this->perPage);
         $profilePosts = $user->posts()->latest()->paginate($this->perPage);
