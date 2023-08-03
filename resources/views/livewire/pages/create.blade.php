@@ -46,7 +46,7 @@
         </div>
 
         @php
-            $categories = App\Models\Category::get();
+            $categories = App\Models\Category::orderBy('name')->get();
         @endphp
         {{-- Modal Submit for review --}}
         <div x-show="submitModal" x-cloak x-transition class="fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-50">

@@ -10,11 +10,23 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="google-site-verification" content="XsRtxPAX4lgZKFEo787XLropFk9una4oaPURl9ZcY-o" />
-        <!-- Scripts -->
+        {{-- Scripts --}}
         @toastScripts
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <!-- Clarity tracking code for https://tailwindcraft.com/ --><script>    (function(c,l,a,r,i,t,y){        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);    })(window, document, "clarity", "script", "i8ufi59x35");</script>
-        <!-- Styles -->
+        {{-- Clarity tracking code for https://tailwindcraft.com/  --}}
+        <script>
+            (function(c, l, a, r, i, t, y) {
+                c[a] = c[a] || function() {
+                    (c[a].q = c[a].q || []).push(arguments)
+                };
+                t = l.createElement(r);
+                t.async = 1;
+                t.src = "https://www.clarity.ms/tag/" + i + "?ref=bwt";
+                y = l.getElementsByTagName(r)[0];
+                y.parentNode.insertBefore(t, y);
+            })(window, document, "clarity", "script", "i8ufi59x35");
+        </script>
+        {{-- Styles --}}
         <style>
             [x-cloak] {
                 display: none !important;
@@ -24,7 +36,6 @@
         @stack('styles')
         {!! getSetting('header_code') !!}
     </head>
-
     <body class="bg-dark font-sans antialiased">
         <livewire:toasts />
         {{-- Navbar --}}

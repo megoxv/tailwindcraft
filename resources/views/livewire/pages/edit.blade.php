@@ -45,7 +45,7 @@
         </div>
 
         @php
-            $categories = App\Models\Category::get();
+            $categories = App\Models\Category::orderBy('name')->get();
         @endphp
         {{-- Modal Update --}}
         <div x-show="updateModal" x-cloak x-transition class="fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-50">
