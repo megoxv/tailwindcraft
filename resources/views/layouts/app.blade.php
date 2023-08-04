@@ -27,7 +27,7 @@
             })(window, document, "clarity", "script", "i8ufi59x35");
         </script>
         <script>window.msAdsQueue = window.msAdsQueue || [];</script>
-        <script async src="https://adsdk.microsoft.com/pubcenter/sdk.js?siteId=362705&publisherId=252799412" crossorigin="anonymous"></script>
+        <script async src="https://adsdk.microsoft.com/pubcenter/sdk.js?siteId=362706&publisherId=252799412" crossorigin="anonymous"></script>
         {{-- Styles --}}
         <style>
             [x-cloak] {
