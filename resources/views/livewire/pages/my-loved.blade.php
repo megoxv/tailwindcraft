@@ -7,7 +7,7 @@
         <div class="flex justify-between items-end content-end">
             <div>
                 <h1 class="text-white text-2xl md:text-3xl font-bold mb-1">My Loves</h1>
-                {{-- <p class="font-normal text-gray-400 md:w-[600px]">Open-Source UI Components made with Tailwind CSS</p> --}}
+                <p class="font-normal text-gray-400 md:w-[600px]">Explore beloved components. Find liked collection, engage with favorites, stay connected.</p>
             </div>
             <div class="relative group rounded-md hidden lg:block">
                 <input type="search" wire:model="search" id="search" class="block p-4 rounded-md w-full text-base font-normal text-white bg-gray-25 outline outline-1 outline-gray-700 appearance-none focus:outline-primary-500 border-none focus:ring-transparent peer" placeholder="Search...">
