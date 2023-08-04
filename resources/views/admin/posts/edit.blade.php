@@ -77,7 +77,7 @@
                             <option value="Draft" @if($post->status == 'Draft') selected @endif>{{ __('main.draft') }}</option>
                             <option value="Wait" @if($post->status == 'Wait') selected @endif>{{ __('main.wait') }}</option>
                             <option value="Active" @if($post->status == 'Active') selected @endif>{{ __('main.active') }}</option>
-                            <option value="Active" @if($post->status == 'Rejecte') selected @endif>{{ __('main.rejecte') }}</option>
+                            <option value="Rejecte" @if($post->status == 'Rejecte') selected @endif>{{ __('main.rejecte') }}</option>
                         </select>
                     </div>
                     <div>

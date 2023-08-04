@@ -5,6 +5,8 @@ namespace App\Helpers;
 use Illuminate\Support\Facades\App;
 use App\Models\AdsManager;
 use App\Models\AdsTracking;
+use App\Models\User;
+use App\Notifications\GeneralNotification;
 use Carbon\Carbon;
 
 class Helper
@@ -32,6 +34,31 @@ class Helper
                 'totalClicks' => 1,
                 'ad_clicks' => json_encode([$ad->slug => 1])
             ]);
+        }
+    }
+
+    public static function notify_user($options = [])
+    {
+        $options = array_merge([
+            'user_id' => '',
+            'content' => [],
+            'action_url' => "",
+            'methods' => ['database'],
+            'image' => "",
+            'btn_text' => "Show"
+        ], $options);
+
+        $user = User::where('id', $options['user_id'])->first();
+
+        if ($user != null) {
+            User::where('email', $user->email)->first()->notify(
+                (new GeneralNotification())
+                    ->setContent($options['content'])
+                    ->setMethods($options['methods'])
+                    ->setActionUrl($options['action_url'])
+                    ->setActionText($options['btn_text'])
+                    ->setActionText($options['image'])
+            );
         }
     }
 }

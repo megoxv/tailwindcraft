@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
@@ -126,6 +127,29 @@ class PostController extends Controller
         ]);
 
         Artisan::call('sitemap:generate');
+
+        // Send Notify for User
+        $statusMessages = [
+            'Draft' => "Component has been converted to Draft",
+            'Wait' => "component has been converted for review. Waiting for the review process",
+            'Active' => "Component has been reviewed and accepted",
+            'Rejecte' => "Component has been rejected"
+        ];
+
+        $message = $statusMessages[$request->status];
+
+        $url = '';
+        if ($request->status == 'Active') {
+            $url = route('post.show', ['username' => $post->user->username, 'slug' => $request->slug]);
+        }
+
+        (new Helper)->notify_user([
+            'user_id' => [$post->user->id],
+            'content' => [$message],
+            'action_url' => $url,
+            'btn_text'=> "Show",
+            'methods' => ['database', 'mail']
+        ]);
 
         toast()->success(__('main.updated_successfully'))->push();
         return redirect()->route('admin.posts.index');
