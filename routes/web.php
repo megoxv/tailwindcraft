@@ -18,6 +18,7 @@ use App\Http\Livewire\Pages\Browse;
 use App\Http\Livewire\Pages\Category;
 use App\Http\Livewire\Pages\Create;
 use App\Http\Livewire\Pages\Edit;
+use App\Http\Livewire\Pages\MyLoved;
 use App\Http\Livewire\Pages\Post;
 use App\Http\Livewire\Pages\Profile;
 use App\Models\Language;
@@ -97,6 +98,7 @@ Route::prefix('user')->middleware(['auth:sanctum', config('jetstream.auth_sessio
 
 Route::get('/create', Create::class)->name('create.show')->middleware(['auth', 'verified', 'active.account']);
 Route::get('/edit/{slug}', Edit::class)->name('edit.show')->middleware(['auth', 'verified', 'active.account']);
+Route::get('my-loved', MyLoved::class)->name('my-loved.show')->middleware('auth');
 
 Route::get('/profile/{username}', Profile::class)->name('profile.show');
 

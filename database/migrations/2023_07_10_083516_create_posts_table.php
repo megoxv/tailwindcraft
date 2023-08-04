@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->text('name')->nullable();
+            $table->text('name')->nullable()->index();
             $table->string('slug')->unique();
-            $table->string('description')->nullable();
+            $table->string('description')->nullable()->index();
             $table->longText('code')->nullable();
             $table->integer('views')->default('0');
             $table->enum('status', ['Draft', 'Wait', 'Active', 'Rejecte']);

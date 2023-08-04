@@ -58,7 +58,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         if ($this->profile_photo == null) {
             return $this->profile_photo_url;
-        } elseif($this->provider != 'default'){
+        } elseif ($this->provider != 'default') {
             return $this->profile_photo;
         } else {
             return env("APP_URL") . '/' . 'storage/' . $this->profile_photo;
@@ -79,6 +79,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function loves()
+    {
+        return $this->hasMany(PostsLove::class);
     }
 
     public function totalLoves()

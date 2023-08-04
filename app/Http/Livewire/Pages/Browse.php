@@ -31,7 +31,6 @@ class Browse extends Component
 
     public function render()
     {
-
         $query = Post::where('status', 'Active');
 
         if (!empty($this->search)) {
