@@ -18,7 +18,7 @@
             <div class="pt-2 pb-4 md:py-9 w-full md:w-auto flex items-center justify-center gap-6">
                 @if ($menu != null)
                     @foreach ($menu->links as $link)
-                        <a href="{{ $link->url }}" aria-label="{{ $link->title }}" class="text-[12.8px] text-white hover:text-primary-500" href="/privacy">{{ $link->title }}</a>
+                        <a href="{{ $link->url }}" aria-label="{{ $link->title }}" class="text-[12.8px] text-white hover:text-primary-500">{{ $link->title }}</a>
                     @endforeach
                 @endif
             </div>
