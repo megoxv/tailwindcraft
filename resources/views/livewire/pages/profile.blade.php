@@ -64,7 +64,7 @@
                             <div class="flex flex-col md:flex-row justify-center md:justify-start items-center md:items-start mb-3">
                                 <img src="{{ $user->getProfilePhoto() }}" alt="{{ $user->name }}" class="w-36 h-36 mb-3 md:mb-0 md:mr-3 rounded-lg outline outline-1 outline-white">
                                 <div class="text-center md:text-start">
-                                    <p class="font-medium text-3xl text-white">{{ $user->name }}</p>
+                                    <h1 class="font-medium text-3xl text-white">{{ $user->name }}</h1>
                                     <span class="text-gray-300 text-lg">&commat;{{ $user->username }}</span>
                                     <p class="font-normal text-md text-gray-300 md:w-[700px] mt-3">{{ $user->bio }}</p>
                                     <div class="flex flex-col md:flex-row items-center md:items-start gap-3 mt-3 truncate">
