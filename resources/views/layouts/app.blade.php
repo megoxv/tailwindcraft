@@ -35,6 +35,7 @@
         </style>
         @livewireStyles
         @stack('styles')
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5156466314537089" crossorigin="anonymous"></script>
         {!! getSetting('header_code') !!}
     </head>
     <body class="bg-dark font-sans antialiased">
