@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire\Pages;
 
+use App\Helpers\Helper;
 use App\Models\Post;
+use App\Models\User;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Livewire\Component;
 use Usernotnull\Toast\Concerns\WireToast;
@@ -95,7 +97,7 @@ class Create extends Component
     {
         $this->validate();
 
-        Post::create([
+        $post = Post::create([
             'user_id' => auth()->user()->id,
             'name' => $this->name,
             'slug' => $this->slug,
@@ -104,6 +106,18 @@ class Create extends Component
             'theme' => $this->theme,
             'code' => $this->code,
             'status' => 'Wait',
+        ]);
+
+        $url = route('admin.posts.edit', $post);
+        $message = "a new component that requires your review";
+        $adminId = User::select('id')->first()->id;
+
+        (new Helper)->notify_user([
+            'user_id' => [$adminId],
+            'content' => [$message],
+            'action_url' => $url,
+            'btn_text'=> "Show",
+            'methods' => ['database', 'mail']
         ]);
 
         toast()->success('Submitted for review successfully')->pushOnNextPage();
